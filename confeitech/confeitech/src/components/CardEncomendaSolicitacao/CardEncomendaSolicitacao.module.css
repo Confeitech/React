@@ -1,0 +1,69 @@
+.card {
+    display: flex;
+    width: 100%;
+    min-height: 225px;
+    background-color: white;
+    border-radius: 15px 15px 0px 0px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card .image {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    background-color: black;
+    border-radius: 15px 0px 0px 0px;
+}
+
+.card .info {
+    display: flex;
+    width: 45%;
+    height: 100%;
+    flex-direction: column;
+    margin-left: 20px;    
+}
+
+.info h3 {
+    display: flex;
+    height: 0%;
+}
+
+.card .info .description {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.description h5 {
+    display: flex;
+    max-height: 0px;
+}
+
+.card .edit {
+    display: flex;
+    width: 25%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+        
+}
+
+.status {
+    display: flex;
+    color: #B89300;
+}
+
+.edit h3, span {
+    display: flex;
+    margin: 0px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+
+
