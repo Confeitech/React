@@ -23,12 +23,17 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
 h1,
 h3 {
+    display: flex;
     color: #000;
     height: 15%;
+    width: 100%;
+    justify-content: center;
+    
 }
 
 .navigation {
