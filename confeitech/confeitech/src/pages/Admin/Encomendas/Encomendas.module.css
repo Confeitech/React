@@ -49,9 +49,15 @@ html {
     display: flex;
     cursor: pointer;
 }
+
+.options h3 {
+    display: flex;
+    cursor: default;
+}
  
 .active {
   text-decoration: underline;
+  text-decoration-color: #FFCC00;
 } 
 
 .table {

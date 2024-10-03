@@ -24,6 +24,7 @@ const Encomendas = () => {
                         <h1>Encomendas</h1>
                         <div className={styles["options"]}>
                             <h4 className={currentView === "solicitacoes" ? styles["active"] : styles[""]} onClick={() => setCurrentView("solicitacoes")}>Solicitações</h4>
+                            <h3>|</h3>
                             <h4 className={currentView === "aceitas" ? styles["active"] : styles[""]} onClick={() => setCurrentView("aceitas")}>Aceitas</h4>
                         </div>
                         <h5>Visualize e edite o status de cada uma das suas encomendas em andamento</h5>
