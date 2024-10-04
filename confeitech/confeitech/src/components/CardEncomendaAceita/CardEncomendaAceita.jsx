@@ -5,7 +5,7 @@ const CardEncomendaAceita = () => {
     const [openModal, setOpenModal] = useState(false);
 
     const [status, setStatus] = useState("Em Preparação");
-    let [indiceCor, setIndiceCor] = useState(1);
+    const [indiceCor, setIndiceCor] = useState(1);
     const colors = ["#5CE45C", "#B89300", "#000", "#FF0000"];
 
     const handleStatus = (numero) => {

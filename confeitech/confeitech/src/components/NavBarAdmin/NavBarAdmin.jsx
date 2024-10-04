@@ -9,7 +9,7 @@ const underlineLocation = (pathname) => {
                 <a href="/encomendas" className={styles["active"]}>Encomendas</a>
                 <a href="/cardapio">Cardápio</a>
                 <a>Bolos</a>
-                <a>Relatórios</a>
+                <a href="/relatorioAdmin">Relatórios</a>
             </div>
         );
     } else if (pathname === "/cardapio") {
@@ -18,7 +18,7 @@ const underlineLocation = (pathname) => {
                 <a href="/encomendas">Encomendas</a>
                 <a href="/cardapio" className={styles["active"]}>Cardápio</a>
                 <a>Bolos</a>
-                <a>Relatórios</a>
+                <a href="/relatorioAdmin">Relatórios</a>
             </div>
         )
     } else if (pathname === "/bolos") {
@@ -27,16 +27,16 @@ const underlineLocation = (pathname) => {
                 <a href="/encomendas">Encomendas</a>
                 <a href="/cardapio">Cardápio</a>
                 <a href="/bolos" className={styles["active"]}>Bolos</a>
-                <a>Relatórios</a>
+                <a href="/relatorioAdmin">Relatórios</a>
             </div>
         )
-    } else if (pathname === "/relatorios") {
+    } else if (pathname === "/relatorioAdmin") {
         return (
             <div className={styles["options"]}>
                 <a href="/encomendas">Encomendas</a>
                 <a href="/cardapio">Cardápio</a>
                 <a>Bolos</a>
-                <a href="/relatorios" className={styles["active"]}>Relatórios</a>
+                <a href="/relatorioAdmin" className={styles["active"]}>Relatórios</a>
             </div>
         )
     }
@@ -49,10 +49,10 @@ const NavBarAdmin = () => {
         <nav className={styles["navbar"]}>
             <div className={styles["content"]}>
                 <div className={styles["text"]}>
-                    <h1>
+                    <h1 className={styles["logo"]}>
                         Cakes AriCroce
                     </h1>
-                    <h3>
+                    <h3 className={styles["frase"]}>
                         Bolos para todos os momentos
                     </h3>
                 </div>
