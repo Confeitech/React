@@ -21,13 +21,20 @@
     display: flex;
     height: 40%;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    margin-top: 10px;
 }
 
-h1, h3 {
+.logo,
+.frase {
+    display: flex;
     color: #000;
     height: 15%;
+    width: 100%;
+    justify-content: center;
+
 }
 
 .navigation {
@@ -38,6 +45,14 @@ h1, h3 {
     height: 25%;
 }
 
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    height: 30%;
+}
+
 a {
     display: flex;
     justify-content: center;
@@ -46,4 +61,28 @@ a {
     height: 100%;
     background-color: null;
     font-size: 105%;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    background-color: null;
+    font-size: 105%;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    text-decoration: underline;
+    text-decoration-color: #FFCC00;
+}
+
+a:hover,
+.active:hover {
+    background-color: #888;
+    transition: 0.5s;
 }
