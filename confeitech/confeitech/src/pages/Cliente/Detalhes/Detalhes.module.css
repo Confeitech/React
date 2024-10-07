@@ -1,0 +1,85 @@
+.container_PaiDetalhe{
+    background-color: white;
+    margin-left: 4.5vw;
+    width: 90vw;
+    height:35vw;
+    display: flex;
+    margin-top: 1.5vw;
+    
+}
+.container_filhoDetalhe{
+    width: 90vw;
+    height: 9vh;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+.container_tituloDetalhe{
+    color: black;
+    width: 90vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.listagem{
+    width: 80vw;
+    display: flex;
+    align-content: space-between;
+    justify-content: space-evenly;
+    margin-top: 4vw;
+    background-color: #DEDEDE;
+    margin-left: 4vw;
+    height: 2vw;
+    align-items: center;
+}
+li{
+    width: 20vw;;
+}
+.listaDois{
+    width: 99vw;
+    display: flex;
+    align-content: space-between;
+    justify-content: space-evenly;
+    margin-top: 2vw;
+    margin-left: 2vw;
+    height: 2vw;
+    align-items: center;
+}
+.diferenciado{
+    display: flex;
+}
+.lixeira{
+    margin-left: -7vw;
+}
+.linha{
+    width: 85vw;
+    height: 0.1vw;
+    background: black;
+    margin-left: 3vw;
+    margin-top: 2vw;
+}
+.container_itens{
+    display: flex;
+    width: 90vw;
+    align-items: center;
+    flex-direction: column
+}
+.container_lembrete{
+    display: flex;
+    width: 85vw;
+    align-content: stretch;
+    justify-content: space-between;
+}
+.container_botaozinho{
+    height: 4vw;
+    width: 12vw;
+    background-color: rgba(167, 23, 109, 1);
+    color: white;
+}
+.gambiarra{
+    margin-top:-1vw;
+    margin-left: 3vw;
+}
+.gambiarraDois{
+    margin-left: 3vw;
+}
