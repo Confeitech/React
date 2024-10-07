@@ -24,7 +24,7 @@ const CardEncomendaAceita = () => {
                     <div className={styles["backModal"]}>
                     </div>
                     <div className={styles["contentModal"]}>
-                        <h1>Alterar Status</h1>
+                        <h2 className={styles["h2_status"]}>Alterar Status</h2>
                         <button className={styles["buttonConcluidoModal"]} onClick={()=> handleStatus(1)}>Concluido</button>
                         <button className={styles["buttonPreparacaoModal"]} onClick={()=> handleStatus(2)}>Em Andamento</button>
                         <button className={styles["buttonPendenteModal"]} onClick={()=> handleStatus(3)}>Pendente</button>
@@ -42,18 +42,18 @@ const CardEncomendaAceita = () => {
                 <img src="" alt="Bolo de chocolate" />
             </div>
             <div className={styles["info"]}>
-                <h3>Bolo de chocolate</h3>
+                <h3 className={styles["h3_cardEncomenda"]}>Bolo de chocolate</h3>
                 <div className={styles["description"]}>
-                    <h5>Cliente: João da Silva</h5>
-                    <h5>Descrição: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae aliquam pariatur voluptates ea molestias.</h5>
-                    <h5>Data do pedido: 25/12/2025</h5>
-                    <h5 style={{ color: "red" }}>PREVISTO PARA RETIRADA: : 25/12/2025</h5>
+                    <h5 className={styles["h5_cardEncomenda"]}>Cliente: João da Silva</h5>
+                    <h5 className={styles["h5_cardEncomenda"]}>Descrição: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae aliquam pariatur voluptates ea molestias.</h5>
+                    <h5 className={styles["h5_cardEncomenda"]}>Data do pedido: 25/12/2025</h5>
+                    <h5 className={styles["h5_cardEncomendaRed"]}>PREVISTO PARA RETIRADA: : 25/12/2025</h5>
                 </div>
             </div>
             <div className={styles["edit"]}>
-                <h3>R$ 89,90</h3>
+                <h3 className={styles["h3_edit"]}>R$ 89,90</h3>
                 <h3 className={styles["status"]} style={{color : colors[indiceCor]}}>{status}</h3>
-                <span>
+                <span className={styles["span_button"]}>
                     <button className={styles["buttonEdit"]} onClick={() => setOpenModal(true)}>Alterar status</button>
                 </span>
             </div>

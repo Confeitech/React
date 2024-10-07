@@ -53,7 +53,7 @@
     height: 30%;
 }
 
-a {
+.a_options {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +62,6 @@ a {
     background-color: null;
     font-size: 105%;
     cursor: pointer;
-    text-decoration: none;
     color: #000;
 }
 
@@ -81,7 +80,7 @@ a {
     text-decoration-color: #FFCC00;
 }
 
-a:hover,
+.a_options:hover,
 .active:hover {
     background-color: #888;
     transition: 0.5s;

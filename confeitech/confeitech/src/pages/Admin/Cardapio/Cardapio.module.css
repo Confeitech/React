@@ -3,8 +3,6 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    /* overflow: hidden; */
-    overflow: auto;
     background-color: #DEDEDE;
 }
 
@@ -31,14 +29,14 @@ html {
     justify-content: end;
 }
 
-span {
+.span_cardapio {
     display: flex;
     width: 65%;
     height: 100%;
     justify-content: space-between;
 }
 
-span button {
+.span_cardapio .button_cardapio {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,14 +47,15 @@ span button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-span button:hover {
+.span_cardapio .button_cardapio:hover {
     background-color: #830000;
     transition: 0.5s;
 }
 
-.text h1 {
+.text .h1_cardapio {
     display: flex;
     height: 9%;
 }

@@ -24,7 +24,7 @@
     margin-left: 20px;    
 }
 
-.info h3 {
+.info .h3_info {
     display: flex;
     height: 0%;
 }
@@ -37,7 +37,7 @@
     justify-content: space-evenly;
 }
 
-.description h5 {
+.description .h5_description  {
     display: flex;
     max-height: 0px;
 }
@@ -57,7 +57,7 @@
     color: #B89300;
 }
 
-.edit h3, span {
+.edit .h3_edit, .span_edit {
     display: flex;
     margin: 0px;
     width: 100%;

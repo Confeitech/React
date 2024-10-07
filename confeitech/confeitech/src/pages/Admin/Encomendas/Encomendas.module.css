@@ -50,7 +50,8 @@ html {
     align-items: end;
 }
 
-.options h4 {
+.options .active,
+.options .inactive {
     display: flex;
     cursor: pointer;
 }
