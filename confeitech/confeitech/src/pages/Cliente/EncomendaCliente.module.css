@@ -26,7 +26,10 @@ body{
 }
 
 .container_paragrafo{
-    margin-top: -0.5vw;
+    display: flex;
+    align-items: center;
+    height: 14%;
+
     
 }
 
@@ -44,9 +47,7 @@ body{
 .container_encomenda {
     width: 32vw;
     display: flex;
-    justify-content: space-between;
-    margin-top: -2vw;
-    
+    justify-content: space-between;    
 }
 
 .container_botao {
@@ -54,6 +55,10 @@ body{
     background-color: #A7176D;
     font-weight: 900;
     border-radius: 0.5vw;
+    height: 2vw;
+    width: 8vw;
+    color: white;
+    font-size: 1vw;
 }
 
 .container_lista {
@@ -90,11 +95,13 @@ li {
 .container_filhoAdicionar{
     background-color: white;
     width: 30vw;
-    height: 4.5vw;
+    height: 3vw;
     display: flex;
     justify-content: space-around;
     border-radius: 0.8vw;
-    margin-top: 1.4vw
+    margin-top: 1.4vw;
+    display: flex;
+    align-items: center;
     
 }
 .container_botaoPaiAdicionar{
@@ -102,7 +109,7 @@ li {
     display: flex;
     align-items: center;
     margin-top: 0.5vw;
-    height: 18vw;
+    height: 17vw;
     
     
 }
@@ -114,12 +121,18 @@ li {
    
  }
  .naosei{
-    height: 3vw;
+    height: 6vw;
+    display: flex;
+    align-items: center;
  }
  .botaoAdicionar{
-    height: 3vw;
-    width: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 0.4vw;
+    height: 2vw;
+    width: 3.5vw;
+    font-size: 2vw;
  }
  .container_botaoPaiAdicionarBanana{
     margin-left: 1vw;
@@ -135,6 +148,8 @@ li {
     justify-content: center;
     height:2.5vw;
     font-size: bold;
+    font-weight: bold;
+    font-weight: 100;
     
     
  }
@@ -154,7 +169,12 @@ li {
  .container_botaodois{
     background-color: #A7176D;
     font-weight: 900;
-    border-radius: 0.5vw;
+    border-radius: 1vw;
+    height: 3vw;
+    width: 8vw;
+    color: white;
+    font-size: 1vw;
+
  }
  .container_retirada{
                 display: flex;
@@ -163,4 +183,13 @@ li {
  }
  .container_gamb { 
     margin-left: -8vw;
+}
+.num{
+    width: 2vw;
+    height: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:0.5vw;
+    border: 1.5px solid black
 }
