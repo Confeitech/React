@@ -1,0 +1,166 @@
+
+html,
+body{
+    height: auto;
+}
+.container_foto {
+    background-color: black;
+    width: 40%;
+    height: 28vw;
+    margin-left: 10vw;
+    margin-top: 3vw;
+}
+
+.container_pai {
+    display: flex;
+    
+   
+}
+
+.container_elementos {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4vw;
+    margin-top: 0vw;
+    
+}
+
+.container_paragrafo{
+    margin-top: -0.5vw;
+    
+}
+
+.container_titulo {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 1vw;
+    height: 2vw;
+}
+.dinheiro{
+    color:rgba(27, 85, 25, 1);
+}
+
+.container_encomenda {
+    width: 32vw;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -2vw;
+    
+}
+
+.container_botao {
+    margin-left: -5vw;
+    background-color: #A7176D;
+    font-weight: 900;
+    border-radius: 0.5vw;
+}
+
+.container_lista {
+    display: flex;
+    justify-content: space-evenly;
+    width: 30vw;
+}
+
+li {
+    list-style-type: none
+}
+
+.container_kilos {
+    background-color: rgba(154, 57, 116, 1);
+    font-weight: 900;
+    margin-top: 2vw;
+    border-radius: 0.5vw;
+    height: 2vw;
+    width: 5vw;
+    color: white;
+}
+.container_paiAdicionar{
+       display: flex;
+    height: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    width: 30vw;
+    margin-top: -2vw;
+    
+}
+
+.container_filhoAdicionar{
+    background-color: white;
+    width: 30vw;
+    height: 4.5vw;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 0.8vw;
+    margin-top: 1.4vw
+    
+}
+.container_botaoPaiAdicionar{
+    
+    display: flex;
+    align-items: center;
+    margin-top: 0.5vw;
+    height: 18vw;
+    
+    
+}
+/* .Morango2{
+    margin-top:-0.5vw;
+} */
+ .paragrafoUm{
+    display: flex;
+   
+ }
+ .naosei{
+    height: 3vw;
+ }
+ .botaoAdicionar{
+    height: 3vw;
+    width: 2vw;
+    border-radius: 0.4vw;
+ }
+ .container_botaoPaiAdicionarBanana{
+    margin-left: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        
+        
+ }
+ .Morango{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:2.5vw;
+    font-size: bold;
+    
+    
+ }
+ 
+ .container_ob{
+    width: 41vw;
+    height: 6vw;
+    display: flex;
+ }
+ .ob{
+    width: 39vw;
+    height: 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ .container_botaodois{
+    background-color: #A7176D;
+    font-weight: 900;
+    border-radius: 0.5vw;
+ }
+ .container_retirada{
+                display: flex;
+                justify-content: space-around;
+                width: 45vw;
+ }
+ .container_gamb { 
+    margin-left: -8vw;
+}
