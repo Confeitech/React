@@ -11,7 +11,11 @@ const Cardapio = () => {
                 <div className={styles["content"]}>
                     <div className={styles["text"]}>
                         <span className={styles["span_cardapio"]}>
+                        </span>
+                        <span className={styles["span_cardapio"]}>
                             <h1 className={styles["h1_cardapio"]}>Cardápio de Delicias</h1>
+                        </span>
+                        <span className={styles["span_cardapioRight"]}>
                             <button className={styles["button_cardapio"]}>NOVO BOLO +</button>
                         </span>
                     </div>

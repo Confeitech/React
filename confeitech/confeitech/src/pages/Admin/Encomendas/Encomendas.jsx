@@ -9,7 +9,7 @@ const Aceitas = () => {
 };
 
 const Solicitacoes = () => {
-    return <CardEncomendaSolicitacao/>;
+    return <CardEncomendaSolicitacao />;
 };
 
 const Encomendas = () => {
@@ -21,13 +21,17 @@ const Encomendas = () => {
             <div className={styles["encomendas"]}>
                 <div className={styles["content"]}>
                     <div className={styles["text"]}>
-                        <h1 className={styles["principal"]}>Encomendas</h1>
+                        <div className={styles["optionsTop"]}>
+                            <h1 className={styles["principal"]}>Encomendas</h1>
+                        </div>
                         <div className={styles["options"]}>
                             <h4 className={currentView === "solicitacoes" ? styles["active"] : styles["inactive"]} onClick={() => setCurrentView("solicitacoes")}>Solicitações</h4>
                             <h3 className={styles["mid"]}>|</h3>
                             <h4 className={currentView === "aceitas" ? styles["active"] : styles["inactive"]} onClick={() => setCurrentView("aceitas")}>Aceitas</h4>
                         </div>
-                        <h5 className={styles["bordao"]}>Visualize e edite o status de cada uma das suas encomendas em andamento</h5>
+                        <div className={styles["optionsBottom"]}>
+                            <h5 className={styles["bordao"]}>Visualize e edite o status de cada uma das suas encomendas em andamento</h5>
+                        </div>
                     </div>
                     <div className={styles["table"]}>
                         {currentView === "solicitacoes" ? <Solicitacoes /> : <Aceitas />}

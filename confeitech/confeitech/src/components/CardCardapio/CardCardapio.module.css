@@ -53,6 +53,7 @@
     height: 15%;
     justify-content: space-evenly;
     align-items: center;
+    margin-bottom: 2px;
 }
 
 .buttonEdit {
