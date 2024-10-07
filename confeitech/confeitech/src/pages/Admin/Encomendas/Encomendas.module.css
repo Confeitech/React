@@ -33,16 +33,21 @@ html {
     align-items: center;
 }
 
-.text h1 {
+.bordao {
+    justify-content: center;
+}
+
+.text .principal {
     display: flex;
-    height: 9%;
+    height: 10%;
+    justify-content: center;
 }
 
 .options {
     display: flex;
     width: 14%;
-    justify-content: space-between;
-    height: 25%;
+    height: 25%;    
+    align-items: end;
 }
 
 .options h4 {
@@ -50,8 +55,9 @@ html {
     cursor: pointer;
 }
 
-.options h3 {
+.options .mid {
     display: flex;
+    justify-content: center;
     cursor: default;
 }
  
