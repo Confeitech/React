@@ -26,22 +26,31 @@ html {
     display: flex;
     height: 20%;
     width: 100%;
-    justify-content: end;
+    justify-content: space-between;
 }
 
 .span_cardapio {
     display: flex;
-    width: 65%;
+    width: 33%;
     height: 100%;
     justify-content: space-between;
+    align-items: center;
 }
 
-.span_cardapio .button_cardapio {
+.span_cardapioRight {
+    display: flex;
+    width: 33%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.button_cardapio {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20%;
-    height: 60%;
+    width: 40%;
+    height: 55%;
     background-color: #B00000;
     color: #fff;
     border: none;
@@ -57,7 +66,7 @@ html {
 
 .text .h1_cardapio {
     display: flex;
-    height: 9%;
+    height: 30%;
 }
 
 .table {

@@ -9,10 +9,10 @@ const CardEncomendaAceita = () => {
     const colors = ["#5CE45C", "#B89300", "#000", "#FF0000"];
 
     const handleStatus = (numero) => {
-        if (numero === 1)setStatus("Concluido");
-        else if (numero === 2)setStatus("Em Andamento");
-        else if (numero === 3)setStatus("Pendente");
-        else if (numero === 4)setStatus("Pedido Cancelado");
+        if (numero === 1) setStatus("Concluido");
+        else if (numero === 2) setStatus("Em Andamento");
+        else if (numero === 3) setStatus("Pendente");
+        else if (numero === 4) setStatus("Pedido Cancelado");
         setIndiceCor(numero - 1);
         setOpenModal(false);
     };
@@ -25,10 +25,10 @@ const CardEncomendaAceita = () => {
                     </div>
                     <div className={styles["contentModal"]}>
                         <h2 className={styles["h2_status"]}>Alterar Status</h2>
-                        <button className={styles["buttonConcluidoModal"]} onClick={()=> handleStatus(1)}>Concluido</button>
-                        <button className={styles["buttonPreparacaoModal"]} onClick={()=> handleStatus(2)}>Em Andamento</button>
-                        <button className={styles["buttonPendenteModal"]} onClick={()=> handleStatus(3)}>Pendente</button>
-                        <button className={styles["buttonCancelarModal"]} onClick={()=> handleStatus(4)}>Cancelar Pedido</button>
+                        <button className={styles["buttonConcluidoModal"]} onClick={() => handleStatus(1)}>Concluido</button>
+                        <button className={styles["buttonPreparacaoModal"]} onClick={() => handleStatus(2)}>Em Andamento</button>
+                        <button className={styles["buttonPendenteModal"]} onClick={() => handleStatus(3)}>Pendente</button>
+                        <button className={styles["buttonCancelarModal"]} onClick={() => handleStatus(4)}>Cancelar Pedido</button>
                     </div>
                 </>
             );
@@ -52,7 +52,7 @@ const CardEncomendaAceita = () => {
             </div>
             <div className={styles["edit"]}>
                 <h3 className={styles["h3_edit"]}>R$ 89,90</h3>
-                <h3 className={styles["status"]} style={{color : colors[indiceCor]}}>{status}</h3>
+                <h3 className={styles["status"]} style={{ color: colors[indiceCor] }}>{status}</h3>
                 <span className={styles["span_button"]}>
                     <button className={styles["buttonEdit"]} onClick={() => setOpenModal(true)}>Alterar status</button>
                 </span>
