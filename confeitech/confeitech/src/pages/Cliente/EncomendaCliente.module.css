@@ -108,8 +108,11 @@ li {
     
     display: flex;
     align-items: center;
+    justify-content: space-around;
     margin-top: 0.5vw;
     height: 17vw;
+    width: 14vw;
+    
     
     
 }
@@ -133,13 +136,16 @@ li {
     height: 2vw;
     width: 3.5vw;
     font-size: 2vw;
+    background-color: rgba(52, 52, 52, 1);
+    color: white;
  }
  .container_botaoPaiAdicionarBanana{
     margin-left: 1vw;
     display: flex;
     align-items: center;
     justify-content: center;
-        
+    width: 10vw;
+    justify-content: space-around;
         
  }
  .Morango{
