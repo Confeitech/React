@@ -16,7 +16,7 @@ const Encomendas = () => {
     const [currentView, setCurrentView] = useState("aceitas");
 
     return (
-        <>
+        <div className={styles["body"]}>
             <NavBarAdmin />
             <div className={styles["encomendas"]}>
                 <div className={styles["content"]}>
@@ -38,7 +38,7 @@ const Encomendas = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

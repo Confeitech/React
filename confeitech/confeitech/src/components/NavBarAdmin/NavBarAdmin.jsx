@@ -40,6 +40,14 @@ const underlineLocation = (pathname) => {
             </div>
         )
     }
+    return (
+        <div className={styles["options"]}>
+            <a href="/encomendas" className={styles["a_options"]}>Encomendas</a>
+            <a href="/cardapio" className={styles["a_options"]}>Cardápio</a>
+            <a className={styles["a_options"]}>Bolos</a>
+            <a href="/relatorioAdmin" className={styles["a_options"]}>Relatórios</a>
+        </div>
+    );
 
 };
 
