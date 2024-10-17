@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./NovoBolo.module.css";
 import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
-
+import check from "../../../utils/assets/verifica.png";
+import cancel from "../../../utils/assets/cancelar.png";
 
 const NovoBolo = () => {
     const [number, setNumber] = useState(0);
@@ -31,7 +32,7 @@ const NovoBolo = () => {
                             <div className={styles["card"]}>
                                 <div className={styles["detailsCard"]}>
                                     <h3>morangos</h3>
-                                    <h3 style={{color : "#1B5519"}}>+ R$0,00</h3>
+                                    <h3 style={{ color: "#1B5519" }}>+ R$0,00</h3>
                                 </div>
                                 <div className={styles["buttonsCard"]}>
                                     <button>-</button>
@@ -49,7 +50,7 @@ const NovoBolo = () => {
                             <div className={styles["card"]}>
                                 <div className={styles["detailsCard"]}>
                                     <h3>morangos</h3>
-                                    <h3 style={{color : "#1B5519"}}>+ R$0,00</h3>
+                                    <h3 style={{ color: "#1B5519" }}>+ R$0,00</h3>
                                 </div>
                                 <div className={styles["buttonsCard"]}>
                                     <button>-</button>
@@ -67,7 +68,7 @@ const NovoBolo = () => {
                             <div className={styles["card"]}>
                                 <div className={styles["detailsCard"]}>
                                     <h3>morangos</h3>
-                                    <h3 style={{color : "#1B5519"}}>+ R$0,00</h3>
+                                    <h3 style={{ color: "#1B5519" }}>+ R$0,00</h3>
                                 </div>
                                 <div className={styles["buttonsCard"]}>
                                     <button>-</button>
@@ -85,7 +86,7 @@ const NovoBolo = () => {
                             <div className={styles["card"]}>
                                 <div className={styles["detailsCard"]}>
                                     <h3>morangos</h3>
-                                    <h3 style={{color : "#1B5519"}}>+ R$0,00</h3>
+                                    <h3 style={{ color: "#1B5519" }}>+ R$0,00</h3>
                                 </div>
                                 <div className={styles["buttonsCard"]}>
                                     <button>-</button>
@@ -103,7 +104,7 @@ const NovoBolo = () => {
                             <div className={styles["card"]}>
                                 <div className={styles["detailsCard"]}>
                                     <h3>morangos</h3>
-                                    <h3 style={{color : "#1B5519"}}>+ R$0,00</h3>
+                                    <h3 style={{ color: "#1B5519" }}>+ R$0,00</h3>
                                 </div>
                                 <div className={styles["buttonsCard"]}>
                                     <button>-</button>
@@ -126,7 +127,17 @@ const NovoBolo = () => {
                             </div>
                         </div>
                         <div className={styles["check"]}>
-                            
+                            <div className={styles["fix"]}>
+                                <div className={styles["colum"]}>
+                                    <h5>Concluir</h5>
+                                    <img src={check} alt="Check" className={styles["imagens"]} />
+                                </div>
+                                <div className={styles["colum"]}>
+                                    <h5>Excluir</h5>
+                                    <img src={cancel} alt="Cancel" className={styles["imagens"]} />
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

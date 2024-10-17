@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./CardEncomendaSolicitacao.module.css";
+import check from "../../utils/assets/verifica.png";
+import cancel from "../../utils/assets/cancelar.png";
 
 const CardEncomendaSolicitacao = () => {
     return (
@@ -17,11 +19,21 @@ const CardEncomendaSolicitacao = () => {
                 </div>
             </div>
             <div className={styles["edit"]}>
-                <h3 className={styles["h3_edit"]}>R$ 89,90</h3>
-                <span className={styles["span_edit"]}>
-                    <img src="" alt="" />
-                    <img src="" alt="" />
-                </span>
+                <div className={styles["ajeitar"]}>
+                    <h3 className={styles["h3_edit"]}>R$ 89,90</h3>
+                    <div className={styles["check"]}>
+                        <div className={styles["fix"]}>
+                            <div className={styles["colum"]}>
+                                <h5 style={{ color: "green" }}>Aceitar</h5>
+                                <img src={check} alt="Check" className={styles["imagens"]} />
+                            </div>
+                            <div className={styles["colum"]}>
+                                <h5 style={{ color: "red" }}>Rejeitar</h5>
+                                <img src={cancel} alt="Cancel" className={styles["imagens"]} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
