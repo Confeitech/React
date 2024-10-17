@@ -14,7 +14,9 @@ const encomendaCliente = () => {
                 <div className={styles["container_elementos"]}>
                     <h1 className={styles["container_titulo"]}>Bolo sensação</h1>
                     <p className={styles["container_paragrafo"]}>aorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p className={styles["dinheiro"]}>R$:00.00</p>
+                
+                <p className={styles["dinheiro"]}>R$:00.00</p>
+                
                     <div className={styles["container_encomenda"]}>
                         <p>Tamanho:1,0Kg</p>
                         <button className={styles["container_botao"]}>Encomendar</button>
@@ -36,7 +38,9 @@ const encomendaCliente = () => {
 
                             <div className={styles["container_botaoPaiAdicionarBanana"]}>
                                 <button className={styles["botaoAdicionar"]}>+</button>
+                                <div className={styles["num"]}>
                                 <p className={styles["paragrafoUm"]}>0</p>
+                                </div>
                                 <button className={styles["botaoAdicionar"]}>-</button>
                             </div>
                         </div>
@@ -48,7 +52,9 @@ const encomendaCliente = () => {
 
                             <div className={styles["container_botaoPaiAdicionarBanana"]}>
                                 <button className={styles["botaoAdicionar"]}>+</button>
+                                <div className={styles["num"]}>
                                 <p className={styles["paragrafoUm"]}>0</p>
+                                </div>
                                 <button className={styles["botaoAdicionar"]}>-</button>
                             </div>
                         </div>
@@ -62,7 +68,9 @@ const encomendaCliente = () => {
                             <div className={styles["container_botaoPaiAdicionarBanana"]}>
                                 <button className={styles["botaoAdicionar"]}>+</button>
                                 <div className={styles["container_zero"]}>
+                                <div className={styles["num"]}>
                                 <p className={styles["paragrafoUm"]}>0</p>
+                                </div>
                                 </div>
                                 <button className={styles["botaoAdicionar"]}>-</button>
                             </div>

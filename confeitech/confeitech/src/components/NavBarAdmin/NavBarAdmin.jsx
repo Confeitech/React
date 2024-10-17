@@ -7,39 +7,47 @@ const underlineLocation = (pathname) => {
         return (
             <div className={styles["options"]}>
                 <a href="/encomendas" className={styles["active"]}>Encomendas</a>
-                <a href="/cardapio">Cardápio</a>
-                <a>Bolos</a>
-                <a href="/relatorioAdmin">Relatórios</a>
+                <a href="/cardapio" className={styles["a_options"]}>Cardápio</a>
+                <a className={styles["a_options"]}>Bolos</a>
+                <a href="/relatorioAdmin" className={styles["a_options"]}>Relatórios</a>
             </div>
         );
     } else if (pathname === "/cardapio") {
         return (
             <div className={styles["options"]}>
-                <a href="/encomendas">Encomendas</a>
+                <a href="/encomendas" className={styles["a_options"]}>Encomendas</a>
                 <a href="/cardapio" className={styles["active"]}>Cardápio</a>
-                <a>Bolos</a>
-                <a href="/relatorioAdmin">Relatórios</a>
+                <a className={styles["a_options"]}>Bolos</a>
+                <a href="/relatorioAdmin" className={styles["a_options"]}>Relatórios</a>
             </div>
         )
     } else if (pathname === "/bolos") {
         return (
             <div className={styles["options"]}>
-                <a href="/encomendas">Encomendas</a>
-                <a href="/cardapio">Cardápio</a>
+                <a href="/encomendas" className={styles["a_options"]}>Encomendas</a>
+                <a href="/cardapio" className={styles["a_options"]}>Cardápio</a>
                 <a href="/bolos" className={styles["active"]}>Bolos</a>
-                <a href="/relatorioAdmin">Relatórios</a>
+                <a href="/relatorioAdmin" className={styles["a_options"]}>Relatórios</a>
             </div>
         )
     } else if (pathname === "/relatorioAdmin") {
         return (
             <div className={styles["options"]}>
-                <a href="/encomendas">Encomendas</a>
-                <a href="/cardapio">Cardápio</a>
-                <a>Bolos</a>
+                <a href="/encomendas" className={styles["a_options"]}>Encomendas</a>
+                <a href="/cardapio" className={styles["a_options"]}>Cardápio</a>
+                <a className={styles["a_options"]}>Bolos</a>
                 <a href="/relatorioAdmin" className={styles["active"]}>Relatórios</a>
             </div>
         )
     }
+    return (
+        <div className={styles["options"]}>
+            <a href="/encomendas" className={styles["a_options"]}>Encomendas</a>
+            <a href="/cardapio" className={styles["a_options"]}>Cardápio</a>
+            <a className={styles["a_options"]}>Bolos</a>
+            <a href="/relatorioAdmin" className={styles["a_options"]}>Relatórios</a>
+        </div>
+    );
 
 };
 

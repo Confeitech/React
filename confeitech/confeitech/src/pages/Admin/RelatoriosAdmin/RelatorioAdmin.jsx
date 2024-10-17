@@ -4,7 +4,7 @@ import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 
 const RelatorioAdmin = () => {
     return (
-        <>
+        <div className={styles["body"]}>
             <NavBarAdmin />
             <div className={styles["content"]}>
                 <div className={styles["field"]}>
@@ -43,7 +43,7 @@ const RelatorioAdmin = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

@@ -1,10 +1,7 @@
-body,
-html {
+.body {
     margin: 0;
     padding: 0;
     height: 100%;
-    /* overflow: hidden; */
-    overflow: auto;
     background-color: #DEDEDE;
 }
 
@@ -14,6 +11,12 @@ html {
     height: 80vh;
     justify-content: center;
     align-items: end;
+    z-index: 0;
+}
+
+.Nav {
+    display: flex;
+    z-index: 999;
 }
 
 .content {
@@ -28,37 +31,48 @@ html {
     display: flex;
     height: 20%;
     width: 100%;
-    justify-content: end;
-}
-
-span {
-    display: flex;
-    width: 65%;
-    height: 100%;
     justify-content: space-between;
 }
 
-span button {
+.span_cardapio {
+    display: flex;
+    width: 33%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.span_cardapioRight {
+    display: flex;
+    width: 33%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.button_cardapio {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20%;
-    height: 60%;
+    width: 40%;
+    height: 55%;
     background-color: #B00000;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 100%;
 }
 
-span button:hover {
+.button_cardapio:hover {
     background-color: #830000;
     transition: 0.5s;
 }
 
-.text h1 {
+.text .h1_cardapio {
     display: flex;
-    height: 9%;
+    height: 30%;
 }
 
 .table {
