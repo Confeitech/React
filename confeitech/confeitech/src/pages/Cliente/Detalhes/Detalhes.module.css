@@ -1,3 +1,6 @@
+body{
+  overflow-x:hidden;
+}
 .container_PaiDetalhe{
     background-color: white;
     margin-left: 4.5vw;
@@ -11,15 +14,17 @@
     width: 90vw;
     height: 9vh;
     display: flex;
-    align-items: center;
+    align-items: end;
     background-color: white;
+    justify-content: center;
 }
 .container_tituloDetalhe{
     color: black;
-    width: 90vw;
+    width: 19.5vw;
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    height: 2.5vw;
 }
 .listagem{
     width: 80vw;
@@ -33,7 +38,7 @@
     align-items: center;
 }
 li{
-    width: 20vw;;
+    width: 17vw;;
 }
 .listaDois{
     width: 99vw;
@@ -41,15 +46,16 @@ li{
     align-content: space-between;
     justify-content: space-evenly;
     margin-top: 2vw;
-    margin-left: 2vw;
     height: 2vw;
     align-items: center;
 }
-.diferenciado{
-    display: flex;
-}
+
 .lixeira{
     margin-left: -7vw;
+    
+}
+.lixoimg{
+    width: 3vw;
 }
 .linha{
     width: 85vw;
@@ -75,6 +81,7 @@ li{
     width: 12vw;
     background-color: rgba(167, 23, 109, 1);
     color: white;
+    border-radius: 0.5vw;
 }
 .gambiarra{
     margin-top:-1vw;
@@ -82,4 +89,55 @@ li{
 }
 .gambiarraDois{
     margin-left: 3vw;
+}
+.botaoDetalhe{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4vw;
+    height: 2vw;
+    width: 3.5vw;
+    font-size: 2vw;
+    background-color: rgba(52, 52, 52, 1);
+    color: white;
+}
+
+.diferenciado{
+    display: flex;
+}
+.botaoMais{
+display: flex;
+width: 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.numeroDiv{
+    width: 2vw;
+    height: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5vw;
+    border: 1.5px solid black
+}
+.coroa {
+    display: flex;
+    height: 60%;
+}
+.botaoAdicionar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4vw;
+    height: 2vw;
+    width: 3.5vw;
+    font-size: 2vw;
+    background-color: rgba(52, 52, 52, 1);
+    color: white;
+    
+}
+.containerPreco{
+    font-size: 1.5vw;
+    color: rgba(136, 109, 3, 1);
 }

@@ -4,6 +4,8 @@ import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import CardEncomendaAceita from "../../../components/CardEncomendaAceita/CardEncomendaAceita";
 import CardEncomendaSolicitacao from "../../../components/CardEncomendaSolicitacao/CardEncomendaSolicitacao";
 
+
+
 const Aceitas = () => {
     return <CardEncomendaAceita />;
 };
