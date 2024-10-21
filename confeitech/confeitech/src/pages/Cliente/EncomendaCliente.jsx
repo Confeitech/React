@@ -2,6 +2,7 @@
 import styles from "./EncomendaCliente.module.css"
 import NavBarCliente from "../../components/NavBarCliente/NavBarCliente";
 import React, { useState } from 'react';
+import bolo from "../../utils/Detalhes/Bolo-Sensacao-01.webp"
 
 const EncomendaCliente = () => {
 
@@ -46,7 +47,7 @@ const EncomendaCliente = () => {
             <NavBarCliente />
             <div className={styles["container_pai"]}>
                 <div className={styles["container_foto"]}>
-                    {/* imagem vai ser aqui */}
+                <img className ={styles["bolofoto"]} src={bolo}/>
                 </div>
 
                 <div className={styles["container_elementos"]}>

@@ -1,21 +1,7 @@
-<<<<<<< HEAD
-html,
-body {
-    height: auto;
-}
-=======
-/* body,
-html{
-    height: auto;
-} */
->>>>>>> 022f90f58c4bac17e4da02fe60853f7e181c5108
+
 
 .container_foto {
-    background-color: black;
-    width: 40%;
-    height: 28vw;
-    margin-left: 10vw;
-    margin-top: 3vw;
+    
 }
 
 .container_pai {
@@ -226,4 +212,10 @@ li {
 
 .paragrafoTamanho {
     font-size: 1.3vw;
+}
+.bolofoto{
+    width: 40vw;
+    height: 30vw;
+    margin-top: 2vw;
+    margin-left: 2vw;
 }
