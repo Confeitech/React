@@ -1,20 +1,13 @@
-/* body,
-html{
-    height: auto;
-} */
+
 
 .container_foto {
-    background-color: black;
-    width: 40%;
-    height: 28vw;
-    margin-left: 10vw;
-    margin-top: 3vw;
+    
 }
 
 .container_pai {
     display: flex;
-    
-   
+
+
 }
 
 .container_elementos {
@@ -22,15 +15,15 @@ html{
     flex-direction: column;
     margin-left: 4vw;
     margin-top: 0vw;
-    
+
 }
 
-.container_paragrafo{
+.container_paragrafo {
     display: flex;
     align-items: center;
     height: 14%;
 
-    
+
 }
 
 .container_titulo {
@@ -40,14 +33,17 @@ html{
     margin-top: 1vw;
     height: 2vw;
 }
-.dinheiro{
-    color:rgba(27, 85, 25, 1);
+
+.dinheiro {
+    font-size: 1.5vw;
+    color: rgba(27, 85, 25, 1);
 }
 
 .container_encomenda {
     width: 32vw;
     display: flex;
-    justify-content: space-between;    
+
+    justify-content: space-between;
 }
 
 .container_botao {
@@ -80,19 +76,20 @@ li {
     width: 5vw;
     color: white;
 }
-.container_paiAdicionar{
-       display: flex;
-    height: 20vw;
+
+.container_paiAdicionar {
+    display: flex;
+    height: 17vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     display: flex;
     width: 30vw;
     margin-top: -2vw;
-    
+
 }
 
-.container_filhoAdicionar{
+.container_filhoAdicionar {
     background-color: white;
     width: 30vw;
     height: 3vw;
@@ -102,33 +99,39 @@ li {
     margin-top: 1.4vw;
     display: flex;
     align-items: center;
-    
+
 }
-.container_botaoPaiAdicionar{
-    
+
+.container_botaoPaiAdicionar {
+
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin-top: 0.5vw;
-    height: 17vw;
     width: 14vw;
-    
-    
-    
+    height: 15vw;
+
 }
+
 /* .Morango2{
     margin-top:-0.5vw;
 } */
- .paragrafoUm{
+.paragrafoUm {
     display: flex;
-   
- }
- .naosei{
+
+}
+
+.naosei {
     height: 6vw;
     display: flex;
     align-items: center;
- }
- .botaoAdicionar{
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.7vw;
+}
+
+.botaoAdicionar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,41 +141,45 @@ li {
     font-size: 2vw;
     background-color: rgba(52, 52, 52, 1);
     color: white;
- }
- .container_botaoPaiAdicionarBanana{
+}
+
+.container_botaoPaiAdicionarBanana {
     margin-left: 1vw;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 10vw;
     justify-content: space-around;
-        
- }
- .Morango{
+
+}
+
+.Morango {
     display: flex;
     align-items: center;
     justify-content: center;
-    height:2.5vw;
+    height: 2.5vw;
     font-size: bold;
     font-weight: bold;
     font-weight: 100;
-    
-    
- }
- 
- .container_ob{
+
+
+}
+
+.container_ob {
     width: 41vw;
     height: 6vw;
     display: flex;
- }
- .ob{
+}
+
+.ob {
     width: 39vw;
     height: 5vw;
     display: flex;
     align-items: center;
     justify-content: center;
- }
- .container_botaodois{
+}
+
+.container_botaodois {
     background-color: #A7176D;
     font-weight: 900;
     border-radius: 1vw;
@@ -181,21 +188,34 @@ li {
     color: white;
     font-size: 1vw;
 
- }
- .container_retirada{
-                display: flex;
-                justify-content: space-around;
-                width: 45vw;
- }
- .container_gamb { 
+}
+
+.container_retirada {
+    display: flex;
+    justify-content: space-around;
+    width: 45vw;
+}
+
+.container_gamb {
     margin-left: -8vw;
 }
-.num{
+
+.num {
     width: 2vw;
     height: 2vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius:0.5vw;
+    border-radius: 0.5vw;
     border: 1.5px solid black
+}
+
+.paragrafoTamanho {
+    font-size: 1.3vw;
+}
+.bolofoto{
+    width: 40vw;
+    height: 30vw;
+    margin-top: 2vw;
+    margin-left: 2vw;
 }

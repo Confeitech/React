@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./NavBarCliente.module.css"
 import { useLocation } from "react-router-dom";
+import carrinho from "../../utils/Detalhes/carrinho.png"
+import pessoa from "../../utils/Detalhes/user.png"
 
 
 const underlineLocation = (pathname) => {
@@ -9,24 +11,33 @@ const underlineLocation = (pathname) => {
             <div className={styles["options"]}>
                 <a href="cardapioCliente" className={styles["active"]}>Cardápio</a>
                 <a href="/encomendaCliente">Encomenda</a>
-                /
+                <div className={styles["icons"]}>
+                <img className={styles["carrinho"]} src={carrinho}/>
+                <img className={styles["pessoa"]} src={pessoa}/>
+                </div>
             </div>
         );
     } else if (pathname === "/cardapioCliente") {
         return (
             <div className={styles["options"]}>
-                <a href="/encomendasCliente">Encomendas</a>
-                <a href="/cardapioCliente" className={styles["active"]}>Cardápio</a>
-                
+                <a href="/cardapioCliente">Cardápio</a>
+                <a href="/encomendasCliente" className={styles["active"]}>Encomendas</a>
+                <div className={styles["icons"]}>
+                <img className={styles["carrinho"]} src={carrinho}/>
+                <img className={styles["pessoa"]} src={pessoa}/>
+                </div>
             </div>
         )
     } 
     else if (pathname === "/detalhesCliente") {
         return (
             <div className={styles["options"]}>
-                <a href="/encomendasCliente">Encomendas</a>
-                <a href="/cardapioCliente" className={styles["active"]}>Cardápio</a>
-                
+                <a href="/cardapioCliente">Cardápio</a>
+                <a href="/encomendasCliente" className={styles["active"]}>Encomendas</a>
+                <div className={styles["icons"]}>
+                <img className={styles["carrinho"]} src={carrinho}/>
+                <img className={styles["pessoa"]} src={pessoa}/>
+                </div>
             </div>
         )
     } 

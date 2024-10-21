@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    display: flex;
+}
+
+.card {
+    display: flex;
+    min-height: 350px;
+    width: 24%;
+    background-color: white;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .5);
+    margin: 5px;
+}
+
+.card .imagem {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    background-color: #000;
+    border-radius: 10px 10px 0 0;
+}
+
+.details{
+    display: flex;
+    width: 100%;
+    height: 35%;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 20px;
+}
+
+.h3_cardCardapio {
+    display: flex;
+    width: 55%;
+}
+
+.h5_cardCardapio {
+    display: flex;
+    width: 75%;
+}
+
+.price {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.buttonEdit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(to bottom, #800080, #ffffff);
+    color: #000;
+    border-radius: 10px;
+    border-color: #ffffff;
+    font-weight: bold;
+    /* border-radius: 0px 50px 0px  0px; */
+}
+
+.buttonEdit:hover {
+    background: linear-gradient(to bottom, #ffffff, #800080);
+}
+.dindin{
+    color: rgba(27, 85, 25, 1);
+}
