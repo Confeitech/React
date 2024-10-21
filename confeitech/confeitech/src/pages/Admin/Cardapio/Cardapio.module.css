@@ -1,5 +1,4 @@
-body,
-html {
+.body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -12,6 +11,12 @@ html {
     height: 80vh;
     justify-content: center;
     align-items: end;
+    z-index: 0;
+}
+
+.Nav {
+    display: flex;
+    z-index: 999;
 }
 
 .content {
@@ -33,7 +38,7 @@ html {
     display: flex;
     width: 33%;
     height: 100%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -57,9 +62,10 @@ html {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 100%;
 }
 
-.span_cardapio .button_cardapio:hover {
+.button_cardapio:hover {
     background-color: #830000;
     transition: 0.5s;
 }

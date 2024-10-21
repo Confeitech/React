@@ -1,0 +1,291 @@
+.corpo {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #DEDEDE;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.editCake {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 20px;
+}
+
+.editLeft {
+    display: flex;
+    height: 100%;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.editRight {
+    display: flex;
+    height: 100%;
+    width: 50vw;
+    align-items: center;
+}
+
+.link {
+    display: flex;
+    text-decoration: underline;
+    color: #9E0000;
+    width: fit-content;
+}
+
+.contentEditLeft {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.editImage {
+    display: flex;
+    width: 95%;
+    height: 80%;
+    background-color: black;
+}
+
+.boxEditRight {
+    display: flex;
+    width: 95%;
+    height: 90%;
+    background-color: white;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentEditRight {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 90%;
+}
+
+.titleEdit {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    align-items: center;
+    height: 6%;
+}
+
+.midEdit {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputEdit {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 60%;
+    height: 70%;
+    vertical-align: top;
+}
+
+.priceEdit {
+    display: flex;
+    color: #434343;
+}
+
+.buttonsEdit {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+}
+
+.buttonPurple {
+    display: flex;
+    height: 70%;
+    width: 13%;
+    background: linear-gradient(to bottom, #9A3974, #CDA4B8);
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    text-decoration: white;
+    margin: 3px;
+    color: #fff;
+    border: 0px;
+    font-size: bold;
+}
+
+.buttonPurple:hover {
+    background: linear-gradient(to bottom, #CDA4B8, #9A3974);
+    transition: .5s;
+}
+
+.buttonWhite {
+    display: flex;
+    height: 70%;
+    width: 8%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 3px;
+    border: 0px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .5);
+    font-size: 150%;
+}
+
+.buttonWhite:hover {
+    background-color: #888;
+    transition: .5s;
+}
+
+.tabelaEdit {
+    display: flex;
+    width: 100%;
+    height: 40%;
+    overflow-y: scroll;
+    flex-direction: column;
+}
+
+.tabelaEdit::-webkit-scrollbar {
+    width: 12px;
+    /* Largura da barra de rolagem */
+}
+
+.tabelaEdit::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Cor da trilha da barra de rolagem */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+}
+
+.tabelaEdit::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Cor da barra de rolagem */
+    border-radius: 10px;
+    /* Bordas arredondadas da barra */
+    border: 3px solid #f1f1f1;
+    /* Espaçamento ao redor da barra */
+}
+
+.tabelaEdit::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Cor da barra quando o mouse está em cima */
+}
+
+.card {
+    display: flex;
+    width: 100%;
+    min-height: 55px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .5);
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.detailsCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 40%;
+    margin-left: 10%;
+}
+
+.buttonsCard {
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonsCard button {
+    display: flex;
+    width: 30%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    border: 0px;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: black;
+    color: #fff;
+}
+
+.number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 20%;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.meio {
+    display: flex;
+    height: 100%;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonsSpace {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buttonAdd {
+    display: flex;
+    width: 40%;
+    height: 80%;
+    background-color: #f1f1f1;
+    color: #000;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 0px;
+    font-weight: bold;
+}
+
+.check {
+    display: flex;
+    width: 100%;
+    height: 13%;
+    justify-content: center;
+    align-items: center;
+}
+
+.fix {
+    display: flex;
+    width: 40%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.colum {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imagens {
+    display: flex;
+    width: 80%;
+    height: 60%;
+}

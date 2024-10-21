@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 html,
 body {
     height: auto;
 }
+=======
+/* body,
+html{
+    height: auto;
+} */
+>>>>>>> 022f90f58c4bac17e4da02fe60853f7e181c5108
 
 .container_foto {
     background-color: black;
