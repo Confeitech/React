@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import styles from "./RelatorioAdmin.module.css";
 import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
+import GraficoArea from "../../../components/GraficoArea/GraficoArea";
+import GraficoBarra from "../../../components/GraficoBarra/GraficoBarra";
 
 const RelatorioAdmin = () => {
+    
+
     return (
         <div className={styles["body"]}>
             <NavBarAdmin />
@@ -23,7 +27,12 @@ const RelatorioAdmin = () => {
                                 <a className={styles["link"]}>Quantidade proxima do limite</a>
                             </div>
                         </div>
-                        <div className={styles["card"]}></div>
+                        <div className={styles["cardRelatorio"]}>
+                            <div className={styles["block"]}>
+                                <h2 className={styles["h2Baixar"]}>Resumo do mês</h2>
+                                <button className={styles["buttonBaixar"]}>Baixar</button>
+                            </div>
+                        </div>
                     </div>
                     <div className={styles["row"]}>
                         <div className={styles["card"]}>
@@ -47,8 +56,14 @@ const RelatorioAdmin = () => {
                         </div>
                     </div>
                     <div className={styles["big"]}>
-                        <div className={styles["grafico"]}></div>
-                        <div className={styles["grafico"]}></div>
+                        <div className={styles["grafico"]}>
+                            <h2>Quantidade de vendas por dia da semana</h2>
+                            <GraficoArea />
+                        </div>
+                        <div className={styles["grafico"]}>
+                            <h2>Bolo mais vendido da semana</h2>
+                            <GraficoBarra/>
+                        </div>
                     </div>
                 </div>
             </div>
