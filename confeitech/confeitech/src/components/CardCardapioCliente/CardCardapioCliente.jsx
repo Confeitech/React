@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./CardCardapioCliente.module.css";
+import bolo from "../../utils/Detalhes/Bolo-Sensacao-01.webp"
 
 
 
@@ -13,7 +14,7 @@ const CardCardapio = () => {
         <div className={styles["row"]}>
             <div className={styles["card"]}>
                 <div className={styles["imagem"]}>
-                    <img src="" alt="" />
+                    <img  className={styles["fotosbolo"]} src={bolo} alt="" />
                 </div>
                 <div className={styles["details"]}>
                     <h3 className={styles["h3_cardCardapio"]}>Bolo de Morango</h3>

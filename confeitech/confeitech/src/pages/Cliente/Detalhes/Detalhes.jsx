@@ -3,9 +3,26 @@ import styles from "./Detalhes.module.css"
 import NavBarCliente from "../../../components/NavBarCliente/NavBarCliente";
 import coroa from "../../../utils/Detalhes/coroa.png";
 import lixeira from "../../../utils/Detalhes/lixeira.png"
+import bolo from "../../../utils/Detalhes/Bolo-Sensacao-01.webp"
+import RetiradaModal from "../../Cliente/Detalhes/retiradaModal/RetiradaModal";
+
 
 
 const Detalhes = () => {
+
+//modal
+const [isModalOpen, setIsModalOpen] = useState(false);
+
+const handleOpenModal = () => {
+  setIsModalOpen(true);
+};
+
+const handleCloseModal = () => {
+  setIsModalOpen(false);
+};
+
+
+
 
 // Contador 1
 const [count, setCount] = useState(0);
@@ -42,7 +59,7 @@ const diminuirDois = () => {
                         <li>Valor</li>
                     </ul>
                     <ul className={styles["listaDois"]}>
-                        <li> FOTO  </li>
+                        <li> <img  className={styles["bolos"]}  src={bolo} />  </li>
                         <li className={styles["containerPreco"]}>Bolo Sensação</li>
                         
                         <li className={styles["diferenciado"]}> 
@@ -62,7 +79,7 @@ const diminuirDois = () => {
                     </ul>
                     <div className={styles["linha"]}></div>
                     <ul className={styles["listaDois"]}>
-                        <li> FOTO  </li>
+                        <li><img  className={styles["bolos"]}  src={bolo} />    </li>
                         <li className={styles["containerPreco"]}>Bolo Sensação</li>
                         
                         <li className={styles["diferenciado"]}> 
@@ -90,7 +107,8 @@ const diminuirDois = () => {
                     <p className={styles["gambiarraDois"]}>Lembrete:Pagamento na retirada</p>
                     
                     <div>
-                <button  className={styles["container_botaozinho"]}>Encomendar</button>
+                <button  className={styles["container_botaozinho"]} onClick={handleOpenModal}>Encomendar</button>
+                <RetiradaModal isOpen={isModalOpen} onClose={handleCloseModal} />
                 </div>
                 </div>
                 <p className={styles["gambiarra"]}>Local da Retirada:Rua haddock lobo</p>

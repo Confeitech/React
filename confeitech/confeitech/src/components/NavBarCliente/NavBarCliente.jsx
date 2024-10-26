@@ -10,7 +10,7 @@ const underlineLocation = (pathname) => {
         return (
             <div className={styles["options"]}>
                 <a href="cardapioCliente" className={styles["active"]}>Cardápio</a>
-                <a href="/encomendaCliente">Encomenda</a>
+                <a href="/minhasEncomendas">Encomenda</a>
                 <div className={styles["icons"]}>
                 <img className={styles["carrinho"]} src={carrinho}/>
                 <img className={styles["pessoa"]} src={pessoa}/>
@@ -21,7 +21,7 @@ const underlineLocation = (pathname) => {
         return (
             <div className={styles["options"]}>
                 <a href="/cardapioCliente">Cardápio</a>
-                <a href="/encomendasCliente" className={styles["active"]}>Encomendas</a>
+                <a href="/minhasEncomendas" className={styles["active"]}>Encomendas</a>
                 <div className={styles["icons"]}>
                 <img className={styles["carrinho"]} src={carrinho}/>
                 <img className={styles["pessoa"]} src={pessoa}/>
@@ -33,7 +33,7 @@ const underlineLocation = (pathname) => {
         return (
             <div className={styles["options"]}>
                 <a href="/cardapioCliente">Cardápio</a>
-                <a href="/encomendasCliente" className={styles["active"]}>Encomendas</a>
+                <a href="/minhasEncomendas" className={styles["active"]}>Encomendas</a>
                 <div className={styles["icons"]}>
                 <img className={styles["carrinho"]} src={carrinho}/>
                 <img className={styles["pessoa"]} src={pessoa}/>
@@ -41,6 +41,19 @@ const underlineLocation = (pathname) => {
             </div>
         )
     } 
+    else if (pathname === "/minhasEncomendas") {
+        return (
+            <div className={styles["options"]}>
+                <a href="/cardapioCliente">Cardápio</a>
+                <a href="/minhasEncomendas" className={styles["active"]}>Encomendas</a>
+                <div className={styles["icons"]}>
+                <img className={styles["carrinho"]} src={carrinho}/>
+                <img className={styles["pessoa"]} src={pessoa}/>
+                </div>
+            </div>
+        )
+    } 
+
 
 };
 

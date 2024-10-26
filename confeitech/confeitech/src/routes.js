@@ -9,6 +9,7 @@ import EncomendaCliente from "./pages/Cliente/EncomendaCliente";
 import Detalhes from "./pages/Cliente/Detalhes/Detalhes";
 import Retirada from "./pages/Cliente/Retirada/Retirada";
 import CardapioCliente from "./pages/Cliente/cardapioC/cardapioCliente"
+import MinhasEncomendas from "./pages/Cliente/MinhasEncomendasC/MinhasEncomendas"
 
 function Rotas() {
     return (
@@ -22,6 +23,8 @@ function Rotas() {
                     <Route path="/detalhesCliente" element={<Detalhes />}></Route>
                     <Route path="/retiradaCliente" element={<Retirada />}></Route>
                     <Route path="/cardapioCliente" element={<CardapioCliente />}></Route>
+                    <Route path="/minhasEncomendas" element={<MinhasEncomendas />}></Route>
+                    
 
                 </Routes>
             </BrowserRouter>
