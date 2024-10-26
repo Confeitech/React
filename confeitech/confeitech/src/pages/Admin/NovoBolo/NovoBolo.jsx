@@ -3,6 +3,7 @@ import styles from "./NovoBolo.module.css";
 import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import check from "../../../utils/assets/verifica.png";
 import cancel from "../../../utils/assets/cancelar.png";
+import imagemLink from "../../../utils/assets/link.png";
 
 const NovoBolo = () => {
     const [number, setNumber] = useState(0);
@@ -123,7 +124,7 @@ const NovoBolo = () => {
                         <div className={styles["buttonsSpace"]}>
                             <button className={styles["buttonAdd"]}>Adicionar+</button>
                             <div className={styles["correct"]}>
-                                <button className={styles["addImage"]}>Adicionar imagem</button>
+                                <button className={styles["addImage"]}>Adicionar imagem <img src={imagemLink} alt="" style={{width: "10%", height:"40%", margin: "10px"}}/></button>
                             </div>
                         </div>
                         <div className={styles["check"]}>
