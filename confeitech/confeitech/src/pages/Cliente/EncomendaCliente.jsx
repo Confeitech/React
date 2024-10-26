@@ -52,7 +52,7 @@ const EncomendaCliente = () => {
 
                 <div className={styles["container_elementos"]}>
                     <h1 className={styles["container_titulo"]}>Bolo sensação</h1>
-                    <p className={styles["container_paragrafo"]}>aorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p className={styles["container_paragrafo"]}>O bolo Sensação é uma sobremesa que combina o sabor marcante do chocolate com a frescura dos morangos. Feito com camadas de massa de chocolate úmida.</p>
                 
                 <p className={styles["dinheiro"]}>R$:00.00</p>
                 
