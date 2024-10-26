@@ -4,7 +4,8 @@ import NavBarCliente from "../../../components/NavBarCliente/NavBarCliente";
 import coroa from "../../../utils/Detalhes/coroa.png";
 import bolo from "../../../utils/Detalhes/Bolo-Sensacao-01.webp"
 import CancelarPedidoModal from "../../Cliente/MinhasEncomendasC/CancelarPedido/CancelarPedidoModal";
-
+import boloFloresta from "../../../utils/Detalhes/floresta-negra-cod-374.jpg"
+import boloMorango from "../../../utils/Detalhes/bolo-de-morango-aniversario.jpg"
 
 
 const MinhasEncomendas = () => {
@@ -49,9 +50,9 @@ const MinhasEncomendas = () => {
                         </div>
                     </div>
                     <div className={styles["encomendasPai"]}>
-                        <img className={styles["bolofoto"]} src={bolo} />
+                        <img className={styles["bolofoto"]} src={boloMorango} />
                         <div className={styles["information"]}>
-                            <p className={styles["bolin"]}>Bolo sensação</p>
+                            <p className={styles["bolin"]}>Bolo de Morango</p>
                             <p className={styles["pretin"]}>Data de Encomenda:</p>
                             <p className={styles["pretin"]}>Data de Retirada:</p>
                             <p className={styles["pretin"]}>Status de Encomenda:</p>
@@ -64,9 +65,9 @@ const MinhasEncomendas = () => {
                         </div>
                     </div>
                     <div className={styles["encomendasPai"]}>
-                        <img className={styles["bolofoto"]} src={bolo} />
+                        <img className={styles["bolofoto"]} src={boloFloresta} />
                         <div className={styles["information"]}>
-                            <p className={styles["bolin"]}>Bolo sensação</p>
+                            <p className={styles["bolin"]}>Bolo Floresta</p>
                             <p className={styles["pretin"]}>Data de Encomenda:</p>
                             <p className={styles["pretin"]}>Data de Retirada:</p>
                             <p className={styles["pretin"]}>Status de Encomenda:</p>
