@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./GraficoArea.module.css";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const data = [

@@ -8,7 +8,7 @@ const underlineLocation = (pathname) => {
             <div className={styles["options"]}>
                 <a href="/encomendas" className={styles["active"]}>Encomendas</a>
                 <a href="/cardapio" className={styles["a_options"]}>Cardápio</a>
-                <a className={styles["a_options"]}>Bolos</a>
+                <a href="/ingredientes" className={styles["a_options"]}>Ingredientes</a>
                 <a href="/relatorioAdmin" className={styles["a_options"]}>Relatórios</a>
             </div>
         );
@@ -17,16 +17,16 @@ const underlineLocation = (pathname) => {
             <div className={styles["options"]}>
                 <a href="/encomendas" className={styles["a_options"]}>Encomendas</a>
                 <a href="/cardapio" className={styles["active"]}>Cardápio</a>
-                <a className={styles["a_options"]}>Bolos</a>
+                <a href="/ingredientes" className={styles["a_options"]}>Ingredientes</a>
                 <a href="/relatorioAdmin" className={styles["a_options"]}>Relatórios</a>
             </div>
         )
-    } else if (pathname === "/bolos") {
+    } else if (pathname === "/ingredientes") {
         return (
             <div className={styles["options"]}>
                 <a href="/encomendas" className={styles["a_options"]}>Encomendas</a>
                 <a href="/cardapio" className={styles["a_options"]}>Cardápio</a>
-                <a href="/bolos" className={styles["active"]}>Bolos</a>
+                <a href="/ingredientes" className={styles["active"]}>Ingredientes</a>
                 <a href="/relatorioAdmin" className={styles["a_options"]}>Relatórios</a>
             </div>
         )
@@ -35,7 +35,7 @@ const underlineLocation = (pathname) => {
             <div className={styles["options"]}>
                 <a href="/encomendas" className={styles["a_options"]}>Encomendas</a>
                 <a href="/cardapio" className={styles["a_options"]}>Cardápio</a>
-                <a className={styles["a_options"]}>Bolos</a>
+                <a href="/ingredientes" className={styles["a_options"]}>Ingredientes</a>
                 <a href="/relatorioAdmin" className={styles["active"]}>Relatórios</a>
             </div>
         )
@@ -44,7 +44,7 @@ const underlineLocation = (pathname) => {
         <div className={styles["options"]}>
             <a href="/encomendas" className={styles["a_options"]}>Encomendas</a>
             <a href="/cardapio" className={styles["a_options"]}>Cardápio</a>
-            <a className={styles["a_options"]}>Bolos</a>
+            <a href="/ingredientes" className={styles["a_options"]}>Ingredientes</a>
             <a href="/relatorioAdmin" className={styles["a_options"]}>Relatórios</a>
         </div>
     );

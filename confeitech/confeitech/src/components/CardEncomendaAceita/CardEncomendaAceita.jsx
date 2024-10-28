@@ -6,7 +6,7 @@ import imgBolo2 from "../../utils/assets/bolo-com-dois-recheios-em-pedaço.jpg.w
 const CardEncomendaAceita = () => {
     const [openModal, setOpenModal] = useState(false);
 
-    const [status, setStatus] = useState("Em Preparação");
+    const [status, setStatus] = useState("Em Andamento");
     const [indiceCor, setIndiceCor] = useState(1);
     const colors = ["#5CE45C", "#B89300", "#000", "#FF0000"];
 
