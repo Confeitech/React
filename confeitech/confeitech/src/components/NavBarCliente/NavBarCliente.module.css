@@ -26,12 +26,12 @@
 }
 
 .titulo{
-    color:rgba(167, 23, 109, 1);
+    color:rgb(160, 16, 16);
     height: 15%;
     font-family: "Qwitcher Grypen", cursive;
 }
 .tituloTres{
-    color:rgba(74, 0, 44, 1);
+    color:rgb(174, 14, 14);
     height: 15%;
     font-family: "Qwitcher Grypen", cursive;
 }

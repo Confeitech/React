@@ -62,8 +62,8 @@
     align-items: center;
     width: 40%;
     height: 100%;
-    background: linear-gradient(to bottom, #800080, #ffffff);
-    color: #000;
+    background-color:#C51B1D;
+    color: white;
     border-radius: 10px;
     border-color: #ffffff;
     font-weight: bold;
@@ -71,7 +71,7 @@
 }
 
 .buttonEdit:hover {
-    background: linear-gradient(to bottom, #ffffff, #800080);
+    background-color: #99171a;
 }
 .dindin{
     color: rgba(27, 85, 25, 1);
