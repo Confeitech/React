@@ -24,7 +24,7 @@ const RelatorioAdmin = () => {
                             <div className={styles["block"]}>
                                 <h4 className={styles["titulo"]}>Quantidade de encomendas para hoje</h4>
                                 <h1 className={styles["textoAzul"]}>10</h1>
-                                <a className={styles["link"]}>Quantidade proxima do limite</a>
+                                <a className={styles["link"]}>Vizualizar</a>
                             </div>
                         </div>
                         <div className={styles["cardRelatorio"]}>

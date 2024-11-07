@@ -58,6 +58,7 @@ const Ingredientes = () => {
               </tbody>
             </table>
           </div>
+          <button className={styles["buttonAdd"]}>Adicionar ingrediente</button>
         </div>
       </div>
     </div>

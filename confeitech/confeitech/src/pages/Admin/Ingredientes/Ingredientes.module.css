@@ -26,10 +26,50 @@
     display: flex;
     width: 80%;
     height: 80%;
+    overflow-y: scroll;
 }
 
 .tabela {
     width: 100%;
     height: fit-content;
     border-collapse: collapse;
+}
+.buttonAdd {
+    width: 15%;
+    height: 10%;
+    background-color: #B91717;
+    border-radius: 10px;
+    border: 0px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.buttonAdd:hover {
+    background-color: #872121;
+}
+
+.space::-webkit-scrollbar {
+    width: 12px;
+    /* Largura da barra de rolagem */
+}
+
+.space::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Cor da trilha da barra de rolagem */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+}
+
+.space::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Cor da barra de rolagem */
+    border-radius: 10px;
+    /* Bordas arredondadas da barra */
+    border: 3px solid #f1f1f1;
+    /* Espaçamento ao redor da barra */
+}
+
+.space::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Cor da barra quando o mouse está em cima */
 }
