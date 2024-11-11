@@ -8,8 +8,8 @@ const Adicionais = ({ index, adicionais }) => {
   return (
     <div className={styles["card"]}>
       <div className={styles["detailsCard"]}>
-        <h3>{adicionais?.nome}</h3>
-        <h3 style={{ color: "#1B5519" }}>+ R${adicionais?.preco}</h3>
+        <h3>{adicionais?.nome || "Sem nome"}</h3>
+        <h3 style={{ color: "#1B5519" }}>+ R${adicionais?.preco || "0,00"}</h3>
       </div>
       <div className={styles["buttonsCard"]}>
         <button>-</button>

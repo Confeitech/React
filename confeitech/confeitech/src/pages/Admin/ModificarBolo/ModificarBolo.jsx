@@ -11,6 +11,7 @@ const ModificarBolo = () => {
   const [nome, setNome] = useState();
   let id = sessionStorage.getItem("index");
   const [cardsData, setCardsData] = useState();
+  let gambis = false;
 
   const getCakesData = () => {
     api
@@ -43,7 +44,7 @@ const ModificarBolo = () => {
 
   const salvarEdicao = () => {
     api
-      .put("/cakes/" + id,{
+      .put("/cakes/" + id, {
         nome: cardsData?.nome,
         descricao: cardsData?.descricao,
         preco: cardsData?.preco,
@@ -61,14 +62,22 @@ const ModificarBolo = () => {
 
   const deletarBolo = () => {
     api
-    .delete("/cakes/" + id)
-    .then(() => {
-      sessionStorage.removeItem("index");
-      window.location.href = "/cardapio";
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .delete("/cakes/" + id)
+      .then(() => {
+        sessionStorage.removeItem("index");
+        window.location.href = "/cardapio";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const adcAdicionais = () => {
+    const novoAdicional = { nome: "", preco: 0 }; // Crie o adicional com propriedades vazias
+    setCardsData((prevData) => ({
+      ...prevData,
+      adicionais: [...prevData.adicionais, novoAdicional], // Adiciona o novo adicional ao array de adicionais
+    }));
   };
 
   useEffect(() => {
@@ -114,11 +123,13 @@ const ModificarBolo = () => {
                 {funcaoAdicionar()}
               </div>
               <div className={styles["buttonsSpace"]}>
-                <button className={styles["buttonAdd"]}>Adicionar+</button>
+                <button className={styles["buttonAdd"]}
+                  onClick={() => adcAdicionais()}
+                >Adicionar+</button>
               </div>
               <div className={styles["check"]}>
                 <div className={styles["fix"]}>
-                  <div className={styles["colum"]} onClick={salvarEdicao()}>
+                  <div className={styles["colum"]} onClick={() => salvarEdicao()}>
                     <h5>Concluir</h5>
                     <img
                       src={check}
@@ -126,7 +137,7 @@ const ModificarBolo = () => {
                       className={styles["imagens"]}
                     />
                   </div>
-                  <div className={styles["colum"]} onClick={deletarBolo()}>
+                  <div className={styles["colum"]} onClick={() => deletarBolo()}>
                     <h5>Excluir</h5>
                     <img
                       src={cancel}
