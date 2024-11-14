@@ -8,10 +8,8 @@ import Adicionais from "../../../components/rowTabelaAdicionais/Adicionais";
 
 
 const ModificarBolo = () => {
-  const [nome, setNome] = useState();
   let id = sessionStorage.getItem("index");
   const [cardsData, setCardsData] = useState();
-  let gambis = false;
 
   const getCakesData = () => {
     api
@@ -45,9 +43,12 @@ const ModificarBolo = () => {
   const salvarEdicao = () => {
     api
       .put("/cakes/" + id, {
+        id: id,
         nome: cardsData?.nome,
-        descricao: cardsData?.descricao,
+        peso: 0,
         preco: cardsData?.preco,
+        descricao: cardsData?.descricao,
+        ativo: true,
         adicionais: cardsData?.adicionais,
       })
       .then(() => {
@@ -78,6 +79,8 @@ const ModificarBolo = () => {
       ...prevData,
       adicionais: [...prevData.adicionais, novoAdicional], // Adiciona o novo adicional ao array de adicionais
     }));
+
+    console.log(cardsData);
   };
 
   useEffect(() => {

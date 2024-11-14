@@ -1,21 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Encomendas.module.css";
 import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import CardEncomendaAceita from "../../../components/CardEncomendaAceita/CardEncomendaAceita";
 import CardEncomendaSolicitacao from "../../../components/CardEncomendaSolicitacao/CardEncomendaSolicitacao";
+import api from "../../../api";
 
-
-
-const Aceitas = () => {
-    return <CardEncomendaAceita />;
-};
-
-const Solicitacoes = () => {
-    return <CardEncomendaSolicitacao />;
-};
 
 const Encomendas = () => {
+    const [aceitasData, setAceitasData] = useState();
+    const [solicitacaoData, setSolicitacaoData] = useState();
     const [currentView, setCurrentView] = useState("aceitas");
+    
+    const getSolicitacao = () => {
+        api
+            .get("/encomendas/aguardando")
+            .then((response) => {
+                const { data } = response;
+                console.log(data);
+                setSolicitacaoData(data);
+                showSolicitacoes();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    const getAceita = () => {
+        api
+            .get("/encomendas/aceitas")
+            .then((response) => {
+                const { data } = response;
+                console.log(data);
+                setAceitasData(data);
+                showAceitas();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    useEffect(() => {
+        if (currentView === "solicitacoes") {
+            getSolicitacao();
+        } else {
+            getAceita();
+        }
+    }, [currentView]);
+
+    const showAceitas = () => {
+        if (aceitasData) {
+            if (Array.isArray(aceitasData)) {
+                return aceitasData?.map((data, index) => (
+                    <CardEncomendaAceita key={index} />
+                ));
+            }
+        }
+    };
+
+    const showSolicitacoes = () => {
+        if (solicitacaoData) {
+            if (Array.isArray(solicitacaoData)) {
+                return solicitacaoData?.map((data, index) => (
+                    <CardEncomendaSolicitacao index={data.id} 
+                    // nomeBolo, nomeCliente, descricao, dataPedido, dataRetirada, preco
+                    />
+                ));
+            }
+        }
+    };
+
 
     return (
         <div className={styles["body"]}>
@@ -36,7 +89,10 @@ const Encomendas = () => {
                         </div>
                     </div>
                     <div className={styles["table"]}>
-                        {currentView === "solicitacoes" ? <Solicitacoes /> : <Aceitas />}
+                        {currentView === "solicitacoes" ?
+                            showSolicitacoes()
+                            :
+                            showAceitas()}
                     </div>
                 </div>
             </div>

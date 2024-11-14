@@ -25,7 +25,7 @@
 .space {
     display: flex;
     width: 80%;
-    height: 80%;
+    height: 75%;
     overflow-y: scroll;
 }
 
@@ -34,6 +34,7 @@
     height: fit-content;
     border-collapse: collapse;
 }
+
 .buttonAdd {
     width: 15%;
     height: 10%;
@@ -72,4 +73,67 @@
 .space::-webkit-scrollbar-thumb:hover {
     background-color: #555;
     /* Cor da barra quando o mouse está em cima */
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    display: flex;
+    background: white;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.fixButtons{
+    display: flex;
+    justify-content: space-evenly;
+    height: 15%;
+    width: 80%;
+}
+
+.buttonS {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.buttonS:hover {
+    background-color: #0B610B;
+}
+
+.buttonN{
+    display: flex;
+    width: 30%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.buttonN:hover {
+    background-color: #970000;
 }
