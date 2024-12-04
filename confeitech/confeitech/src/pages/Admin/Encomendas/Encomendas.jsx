@@ -10,13 +10,14 @@ const Encomendas = () => {
     const [aceitasData, setAceitasData] = useState();
     const [solicitacaoData, setSolicitacaoData] = useState();
     const [currentView, setCurrentView] = useState("aceitas");
-    
+
     const getSolicitacao = () => {
         api
-            .get("/encomendas/aguardando")
+            .get("/encomendas")
             .then((response) => {
                 const { data } = response;
                 console.log(data);
+                console.log("batata")
                 setSolicitacaoData(data);
                 showSolicitacoes();
             })
@@ -27,10 +28,11 @@ const Encomendas = () => {
 
     const getAceita = () => {
         api
-            .get("/encomendas/aceitas")
+            .get("/encomendas")
             .then((response) => {
                 const { data } = response;
                 console.log(data);
+                console.log("tomate")
                 setAceitasData(data);
                 showAceitas();
             })
@@ -39,19 +41,11 @@ const Encomendas = () => {
             });
     }
 
-    useEffect(() => {
-        if (currentView === "solicitacoes") {
-            getSolicitacao();
-        } else {
-            getAceita();
-        }
-    }, [currentView]);
-
     const showAceitas = () => {
         if (aceitasData) {
             if (Array.isArray(aceitasData)) {
                 return aceitasData?.map((data, index) => (
-                    <CardEncomendaAceita key={index} />
+                    <CardEncomendaAceita key={index} status={data.andamento} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.bolo.descricao} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.bolo.preco} />
                 ));
             }
         }
@@ -60,14 +54,22 @@ const Encomendas = () => {
     const showSolicitacoes = () => {
         if (solicitacaoData) {
             if (Array.isArray(solicitacaoData)) {
+                console.log("batata")
                 return solicitacaoData?.map((data, index) => (
-                    <CardEncomendaSolicitacao index={data.id} 
-                    // nomeBolo, nomeCliente, descricao, dataPedido, dataRetirada, preco
+                    <CardEncomendaSolicitacao key={index} index={data.id} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.bolo.descricao} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.bolo.preco}
                     />
                 ));
             }
         }
     };
+
+    useEffect(() => {
+        if (currentView === "aceitas") {
+            getAceita();
+        } else {
+            getSolicitacao();
+        }
+    }, [currentView]);
 
 
     return (

@@ -22,7 +22,7 @@ const RelatorioAdmin = () => {
                         </div>
                         <div className={styles["card"]}>
                             <div className={styles["block"]}>
-                                <h4 className={styles["titulo"]}>Quantidade de encomendas para hoje</h4>
+                                <h4 className={styles["titulo"]}>Quantidade de solicitações não confirmadas</h4>
                                 <h1 className={styles["textoAzul"]}>10</h1>
                                 <a className={styles["link"]}>Vizualizar</a>
                             </div>

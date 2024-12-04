@@ -5,11 +5,15 @@ import check from "../../../utils/assets/verifica.png";
 import cancel from "../../../utils/assets/cancelar.png";
 import api from "../../../api";
 import Adicionais from "../../../components/rowTabelaAdicionais/Adicionais";
-
+import { ToastContainer, toast } from "react-toastify";
 
 const ModificarBolo = () => {
   let id = sessionStorage.getItem("index");
   const [cardsData, setCardsData] = useState();
+
+  const [nomeBolo, setNomeBolo] = useState();
+  const [precoBolo, setPrecoBolo] = useState();
+  const [descricaoBolo, setDescricaoBolo] = useState();
 
   const getCakesData = () => {
     api
@@ -30,58 +34,66 @@ const ModificarBolo = () => {
     }
   };
 
-  const funcaoAdicionar = () => {
-    if (cardsData?.adicionais) {
-      if (Array.isArray(cardsData?.adicionais)) {
-        return cardsData?.adicionais.map((data, index) => (
-          <Adicionais key={index} index={index} adicionais={data} />
-        ));
-      }
-    }
-  };
+  // const funcaoAdicionar = () => {
+  //   if (cardsData?.adicionais) {
+  //     if (Array.isArray(cardsData?.adicionais)) {
+  //       return cardsData?.adicionais.map((data, index) => (
+  //         <Adicionais key={index} index={index} adicionais={data} />
+  //       ));
+  //     }
+  //   }
+  // };
 
   const salvarEdicao = () => {
-    api
-      .put("/cakes/" + id, {
-        id: id,
-        nome: cardsData?.nome,
-        peso: 0,
-        preco: cardsData?.preco,
-        descricao: cardsData?.descricao,
-        ativo: true,
-        adicionais: cardsData?.adicionais,
-      })
-      .then(() => {
-        console.log("oi");
-        sessionStorage.removeItem("index");
-        window.location.href = "/cardapio";
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    if (nomeBolo === undefined || descricaoBolo === undefined || precoBolo === undefined) {
+      toast.error("Preencha todos os campos!");
+    } else {
+
+      api
+        .put("/cakes/" + id, {
+          id: id,
+          nome: nomeBolo,
+          peso: 0,
+          preco: precoBolo,
+          descricao: descricaoBolo,
+          ativo: true,
+          adicionais: cardsData?.adicionais,
+        })
+        .then(() => {
+          toast.success("Bolo editado com sucesso!");
+          sessionStorage.removeItem("index");
+          window.location.href = "/cardapio";
+        })
+        .catch((error) => {
+          toast.error("Erro ao editar bolo");
+          console.log(error);
+        });
+    };
+  }
 
   const deletarBolo = () => {
     api
       .delete("/cakes/" + id)
       .then(() => {
         sessionStorage.removeItem("index");
+        toast.success("Bolo deletado com sucesso!");
         window.location.href = "/cardapio";
       })
       .catch((error) => {
+        toast.error("Erro ao deletar bolo");
         console.log(error);
       });
   };
 
-  const adcAdicionais = () => {
-    const novoAdicional = { nome: "", preco: 0 }; // Crie o adicional com propriedades vazias
-    setCardsData((prevData) => ({
-      ...prevData,
-      adicionais: [...prevData.adicionais, novoAdicional], // Adiciona o novo adicional ao array de adicionais
-    }));
+  // const adcAdicionais = () => {
+  //   const novoAdicional = { nome: "", preco: 0 }; // Crie o adicional com propriedades vazias
+  //   setCardsData((prevData) => ({
+  //     ...prevData,
+  //     adicionais: [...prevData.adicionais, novoAdicional], // Adiciona o novo adicional ao array de adicionais
+  //   }));
 
-    console.log(cardsData);
-  };
+  //   console.log(cardsData);
+  // };
 
   useEffect(() => {
     getCakesData();
@@ -101,20 +113,38 @@ const ModificarBolo = () => {
           <div className={styles["boxEditRight"]}>
             <div className={styles["contentEditRight"]}>
               <div className={styles["titleEdit"]}>
-                <h2>{cardsData?.nome}</h2>
-                <h3 className={styles["link"]}>Modificar Nome +</h3>
+                <textarea
+                  placeholder={cardsData?.nome}
+                  id="nomeBolo"
+                  className={styles["text"]}
+                  value={nomeBolo}
+                  onChange={(e) => setNomeBolo(e.target.value)}
+                ></textarea>
+                <label htmlFor="nomeBolo" className={styles["link"]}>Modificar Nome +</label>
               </div>
               <div className={styles["midEdit"]}>
                 <textarea
+                  id="descricaoBolo"
                   placeholder={cardsData?.descricao}
                   type="text"
                   className={styles["inputEdit"]}
+                  value={descricaoBolo}
+                  onChange={(e) => setDescricaoBolo(e.target.value)}
                 />
-                <h3 className={styles["link"]}>Modificar Descrição +</h3>
+                <label htmlFor="descricaoBolo" className={styles["link"]}>Modificar Descrição +</label>
               </div>
               <div className={styles["titleEdit"]}>
-                <h2 className={styles["priceEdit"]}>R$: {cardsData?.preco}</h2>
-                <h3 className={styles["link"]}>Modificar Preço +</h3>
+                <div className={styles["precinho"]}>
+                  R$:
+                </div>
+                <textarea
+                  id="precoBolo"
+                  className={styles["text"]}
+                  placeholder={cardsData?.preco}
+                  value={precoBolo}
+                  onChange={(e) => setPrecoBolo(e.target.value)}
+                ></textarea>
+                <label htmlFor="precoBolo" className={styles["link"]}>Modificar Preço +</label>
               </div>
               <div className={styles["buttonsEdit"]}>
                 <button className={styles["buttonPurple"]}>1,0kg</button>
@@ -122,14 +152,14 @@ const ModificarBolo = () => {
                 <button className={styles["buttonPurple"]}>1,0kg</button>
                 <button className={styles["buttonWhite"]}>+</button>
               </div>
-              <div className={styles["tabelaEdit"]}>
+              {/* <div className={styles["tabelaEdit"]}>
                 {funcaoAdicionar()}
               </div>
               <div className={styles["buttonsSpace"]}>
                 <button className={styles["buttonAdd"]}
                   onClick={() => adcAdicionais()}
                 >Adicionar+</button>
-              </div>
+              </div> */}
               <div className={styles["check"]}>
                 <div className={styles["fix"]}>
                   <div className={styles["colum"]} onClick={() => salvarEdicao()}>

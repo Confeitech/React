@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 import imgBolo from "../../utils/assets/fatia-de-bolo-de-chocolate-recheado-com-creme-marrom-e-morango-por-cima_993044-36.avif";
 
 const CardCardapio = ({ index, nome, descricao, preco }) => {
-  const navigate = useNavigate(); // Hook do React Router para navegação
+  const navigate = useNavigate(); 
 
   const handleEditCakeClick = (index) => {
     sessionStorage.setItem("index", index);
-    console.log("index", index);
-    navigate("/modificar-bolo"); // Navega para a página /about
+    navigate("/modificar-bolo"); 
   };
 
   return (
