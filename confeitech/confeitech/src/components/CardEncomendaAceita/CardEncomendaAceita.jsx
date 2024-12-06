@@ -2,24 +2,38 @@ import React, { useState } from "react";
 import styles from "./CardEncomendaAceita.module.css";
 import imgBolo from "../../utils/assets/fatia-de-bolo-de-chocolate-recheado-com-creme-marrom-e-morango-por-cima_993044-36.avif";
 import imgBolo2 from "../../utils/assets/bolo-com-dois-recheios-em-pedaço.jpg.webp";
+import api from "../../api";
+import { ToastContainer, toast } from "react-toastify";
 
 const CardEncomendaAceita = (
-  { status, nomeBolo, nomeCliente, descricao, dataPedido, dataRetirada, preco,
-  }) => {
+  { id, status, nomeBolo, nomeCliente, descricao, dataPedido, dataRetirada, preco, getAceita }
+) => {
   const [openModal, setOpenModal] = useState(false);
-
-  // const [status, setStatus] = useState("Em Andamento");
   const [indiceCor, setIndiceCor] = useState(1);
   const colors = ["#5CE45C", "#B89300", "#000", "#FF0000"];
+  let situação;
 
-  // const handleStatus = (numero) => {
-  //   if (numero === 1) setStatus("Concluido");
-  //   else if (numero === 2) setStatus("Em Andamento");
-  //   else if (numero === 3) setStatus("Pendente");
-  //   else if (numero === 4) setStatus("Pedido Cancelado");
-  //   setIndiceCor(numero - 1);
-  //   setOpenModal(false);
-  // };
+  const handleStatus = (numero) => {
+    if (numero === 1) situação = "PRONTA";
+    else if (numero === 2) situação = "EM_PREPARO";
+    else if (numero === 3) situação = "AGUARDANDO"
+    else situação = "CANCELADA";
+
+    api
+      .patch("/encomendas/" + id, { andamentoEncomenda: situação })
+      .then(() => {
+        toast.success("Status de pedido alterado!");
+        // Chama a função para atualizar os dados das encomendas aceitas
+        if (typeof getAceita === "function") {
+          getAceita();
+        }
+      })
+      .catch((error) => {
+        console.error("Erro real:", error);
+        toast.error("Erro ao alterar o status do pedido!");
+      });
+    setOpenModal(false);
+  };
 
   const Dialog = ({ isOpen }) => {
     if (isOpen) {
@@ -30,25 +44,25 @@ const CardEncomendaAceita = (
             <h2 className={styles["h2_status"]}>Alterar Status</h2>
             <button
               className={styles["buttonConcluidoModal"]}
-            // onClick={() => handleStatus(1)}
+              onClick={() => handleStatus(1)}
             >
               Concluido
             </button>
             <button
               className={styles["buttonPreparacaoModal"]}
-            // onClick={() => handleStatus(2)}
+              onClick={() => handleStatus(2)}
             >
               Em Andamento
             </button>
             <button
               className={styles["buttonPendenteModal"]}
-            // onClick={() => handleStatus(3)}
+              onClick={() => handleStatus(3)}
             >
               Pendente
             </button>
             <button
               className={styles["buttonCancelarModal"]}
-            // onClick={() => handleStatus(4)}
+              onClick={() => handleStatus(4)}
             >
               Cancelar Pedido
             </button>

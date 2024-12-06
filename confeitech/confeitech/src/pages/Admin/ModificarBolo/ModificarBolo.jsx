@@ -6,10 +6,13 @@ import cancel from "../../../utils/assets/cancelar.png";
 import api from "../../../api";
 import Adicionais from "../../../components/rowTabelaAdicionais/Adicionais";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { use } from "react";
 
 const ModificarBolo = () => {
   let id = sessionStorage.getItem("index");
   const [cardsData, setCardsData] = useState();
+  const navigate = useNavigate();
 
   const [nomeBolo, setNomeBolo] = useState();
   const [precoBolo, setPrecoBolo] = useState();
@@ -22,6 +25,9 @@ const ModificarBolo = () => {
         const { data } = response;
         console.log(data);
         setCardsData(data);
+        setNomeBolo(data.nome);
+        setPrecoBolo(data.preco);
+        setDescricaoBolo(data.descricao);
       })
       .catch((error) => {
         console.log(error);
@@ -30,7 +36,7 @@ const ModificarBolo = () => {
 
   const checkIdNull = () => {
     if (id === null) {
-      window.location.href = "/cardapio";
+      navigate("/cardapio");
     }
   };
 
@@ -62,7 +68,7 @@ const ModificarBolo = () => {
         .then(() => {
           toast.success("Bolo editado com sucesso!");
           sessionStorage.removeItem("index");
-          window.location.href = "/cardapio";
+          navigate("/cardapio");
         })
         .catch((error) => {
           toast.error("Erro ao editar bolo");
@@ -75,9 +81,9 @@ const ModificarBolo = () => {
     api
       .delete("/cakes/" + id)
       .then(() => {
-        sessionStorage.removeItem("index");
         toast.success("Bolo deletado com sucesso!");
-        window.location.href = "/cardapio";
+        sessionStorage.removeItem("index");
+        navigate("/cardapio");
       })
       .catch((error) => {
         toast.error("Erro ao deletar bolo");
@@ -114,7 +120,6 @@ const ModificarBolo = () => {
             <div className={styles["contentEditRight"]}>
               <div className={styles["titleEdit"]}>
                 <textarea
-                  placeholder={cardsData?.nome}
                   id="nomeBolo"
                   className={styles["text"]}
                   value={nomeBolo}
@@ -125,7 +130,6 @@ const ModificarBolo = () => {
               <div className={styles["midEdit"]}>
                 <textarea
                   id="descricaoBolo"
-                  placeholder={cardsData?.descricao}
                   type="text"
                   className={styles["inputEdit"]}
                   value={descricaoBolo}
@@ -140,7 +144,6 @@ const ModificarBolo = () => {
                 <textarea
                   id="precoBolo"
                   className={styles["text"]}
-                  placeholder={cardsData?.preco}
                   value={precoBolo}
                   onChange={(e) => setPrecoBolo(e.target.value)}
                 ></textarea>

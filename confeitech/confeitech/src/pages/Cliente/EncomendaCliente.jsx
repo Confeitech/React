@@ -3,12 +3,17 @@ import styles from "./EncomendaCliente.module.css";
 import NavBarCliente from "../../components/NavBarCliente/NavBarCliente";
 import bolo from "../../utils/Detalhes/Bolo-Sensacao-01.webp";
 import api from "../../api";
+import { useNavigate } from 'react-router-dom';
 
 const EncomendaCliente = () => {
     const [morangoData, setMorangoData] = useState([]);
     const [morangoDataUm, setMorangoDataUm] = useState([]);
     const [morangoDataDois, setMorangoDataDois] = useState([]);
     const [contadores, setContadores] = useState({}); // Estado para armazenar os contadores individuais
+    const [preco, setPreco] = useState(0);
+    const navigate = useNavigate();
+    const [precoTela, setPrecoTela] = useState(0);
+    const [observacoes, setObservacoes] = useState("");
 
     // Recuperar valores de adicionais
     useEffect(() => {
@@ -37,6 +42,21 @@ const EncomendaCliente = () => {
             .catch((error) => console.log(error));
     }, []);
 
+    useEffect(() => {
+        console.log(contadores);
+
+        let total = 0;
+        for (const [key, value] of Object.entries(contadores)) {
+            const item = morangoData.find((data) => data.id === Number(key));
+            if (item) {
+                total += value * Number(item.preco);
+            }
+        }
+        setPrecoTela(total + preco); // Atualiza o estado
+    }, [contadores, preco]); // Adicione dependências relevantes
+
+
+
     // Função para incrementar o contador
     const incrementar = (id) => {
         setContadores((prev) => ({
@@ -55,21 +75,31 @@ const EncomendaCliente = () => {
 
     const getBolo = () => {
 
-        let id = sessionStorage.getItem("index");
+        let index = sessionStorage.getItem("index");
 
-        api.get("/cakes/" + id)
+        api.get("/cakes/" + index)
             .then((response) => {
                 const { data } = response;
                 console.log(data);
-                console.log(id)
+                console.log(index)
                 setMorangoDataDois(data);
+                setPreco(data.preco);
+                precoTela = data.preco;
+                console.log(precoTela);
             })
             .catch((error) => console.log(error));
     }
 
 
     const goToCardapioDois = () => {
-        window.location.href = '/detalhesCliente'; // Redireciona para a página "/cardapio"
+        let envio = {
+            id: morangoDataDois.id,
+            preco: precoTela,
+            adicionais: contadores,
+            observacoes: observacoes
+        }
+        sessionStorage.setItem("props", JSON.stringify(envio));
+        navigate('/detalhesCliente'); // Redireciona para a página "/cardapio"
     };
 
     return (
@@ -82,36 +112,36 @@ const EncomendaCliente = () => {
 
                 <div className={styles["container_elementos"]}>
                     <h1 className={styles["container_titulo"]}>
-                       {
-                        morangoDataDois?.nome 
-                    
-                       }
+                        {
+                            morangoDataDois?.nome
+
+                        }
                     </h1>
                     <p className={styles["container_paragrafo"]}>
-                       {
-                        morangoDataDois?.descricao
-                       }
+                        {
+                            morangoDataDois?.descricao
+                        }
                     </p>
 
                     <p className={styles["dinheiro"]}>
                         <p>R$
-                        {
-                        morangoDataDois?.preco
-                      }
+                            {
+                                precoTela.toFixed(2) // Exibe o preço formatado com 2 casas decimais
+                            }
                         </p>
-                    
+
                     </p>
 
                     <div className={styles["container_encomenda"]}>
                         <p className={styles["paragrafoTamanho"]}>Tamanho:1,0Kg</p>
                         <button onClick={goToCardapioDois} className={styles["container_botao"]}>Encomendar</button>
                     </div>
-                    <div className={styles["container_lista"]}>
+                    {/* <div className={styles["container_lista"]}>
                         <button className={styles["container_kilos"]}>1.5Kg</button>
                         <button className={styles["container_kilos"]}>2.0Kg</button>
                         <button className={styles["container_kilos"]}>1.0Kg</button>
                         <button className={styles["container_kilos"]}>2.5Kg</button>
-                    </div>
+                    </div> */}
 
                     <h3 className={styles["naosei"]}>Adicionais</h3>
                     <div className={styles["container_paiAdicionar"]}>
@@ -148,7 +178,7 @@ const EncomendaCliente = () => {
                     <p>Alguma observação?</p>
                     <div className={styles["container_ob"]}>
                         <div className="observacao">
-                            <input className={styles["ob"]} type="text" placeholder="Ex: tenho intolerância a lactose, gluten etc. "></input>
+                            <input className={styles["ob"]} type="text" onChange={(e) => setObservacoes(e.target.value)} placeholder="Ex: tenho intolerância a lactose, gluten etc. "></input>
                         </div>
                     </div>
 

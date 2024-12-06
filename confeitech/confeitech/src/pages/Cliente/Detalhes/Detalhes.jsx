@@ -9,41 +9,55 @@ import api from "../../../api";
 
 const Detalhes = () => {
   const [morangoDataUm, setMorangoDataUm] = useState([]);
-  const [contadores, setContadores] = useState({});
+  const [contadores, setContadores] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
+  const [preco, setPreco] = useState(0);
+  const [precoTela, setPrecoTela] = useState(0);
 
   // Carregar os dados e inicializar os contadores
+  const data = JSON.parse(sessionStorage.getItem("props"));
   useEffect(() => {
-    api.get("/cakes")
+
+    console.log("data");
+    console.log(data);
+    setPreco(data.preco);
+    setPrecoTela(data.preco);
+    api.get("/cakes/" + data?.id)
       .then((response) => {
         const { data } = response;
         setMorangoDataUm(data);
-
-        // Inicializa os contadores para os itens carregados
-        const initialCounters = data.reduce((acc, item) => {
-          acc[item.id] = 0;
-          return acc;
-        }, {});
-        setContadores(initialCounters);
+        console.log(morangoDataUm);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  const incrementar = (id) => {
-    setContadores((prev) => ({
-      ...prev,
-      [id]: prev[id] + 1,
-    }));
+  const incrementar = () => {
+    setContadores((prevContadores) => {
+      const novoContador = prevContadores + 1;
+      setPrecoTela(preco * novoContador); // Atualiza o preço com o novo contador
+      return novoContador;
+    });
+
+    console.log("increment", preco, contadores);
   };
 
-  const decrementar = (id) => {
-    setContadores((prev) => ({
-      ...prev,
-      [id]: prev[id] > 0 ? prev[id] - 1 : 0,
-    }));
+  const decrementar = () => {
+    setContadores((prevContadores) => {
+      if (prevContadores === 1) {
+        setPrecoTela(preco); // Se o contador for 1, mantemos o preço original
+        return prevContadores; // Não decrementa
+      }
+
+      const novoContador = prevContadores - 1;
+      setPrecoTela(preco * novoContador); // Atualiza o preço com o novo contador
+      return novoContador;
+    });
+
+    console.log("decrement", preco, contadores);
   };
+
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -84,45 +98,45 @@ const Detalhes = () => {
           <ul className={styles["listagem"]}>
             <li>Foto</li>
             <li>Produto</li>
-            <li>Quantidade</li>
+            <li>Peso</li>
             <li>Valor</li>
           </ul>
-          {morangoDataUm.length > 0 ? (
-            morangoDataUm.map((data) => (
-              <ul key={data.id} className={styles["listaDois"]}>
-                <li><img className={styles["bolos"]} src={bolo} alt="Bolo" /></li>
-                <li className={styles["containerPreco"]}>
-                  <div className={styles["produtobolo"]}>{data.nome}</div>
-                  <li className={styles["diferenciado"]}>
-                    <div className={styles["botaoMais"]}>
-                      <button
-                        onClick={() => incrementar(data.id)}
-                        className={styles["botaoAdicionar"]}
-                      >+</button>
-                      <div className={styles["numeroDiv"]}>
-                        <p>{contadores[data.id] || 0}</p>
-                      </div>
-                      <button
-                        onClick={() => decrementar(data.id)}
-                        className={styles["botaoAdicionar"]}
-                      >-</button>
-                    </div>
-                  </li>
-                </li>
-                <li className={styles["containerPreco"]}>R$: {data.preco.toFixed(2)}</li>
-                <li className={styles["lixeira"]}>
-                  <img
-                    className={styles["lixoimg"]}
-                    src={lixeira}
-                    alt="Cancelar Pedido"
-                    onClick={() => handleOpenCancelModal(data.id)} // Abre o modal de cancelamento para o item específico
-                  />
-                </li>
-              </ul>
-            ))
-          ) : (
-            <p>Nenhum pedido disponível.</p>
-          )}
+          <ul key={morangoDataUm.id} className={styles["listaDois"]}>
+            <li>
+              <img className={styles["bolos"]} src={bolo} alt="Bolo" />
+            </li>
+            <li className={styles["containerPreco"]}>
+              <div className={styles["produtobolo"]}>{morangoDataUm.nome}</div>
+              <li className={styles["diferenciado"]}>
+                <div className={styles["botaoMais"]}>
+                  <button
+                    onClick={() => incrementar()}
+                    className={styles["botaoAdicionar"]}
+                  >
+                    +
+                  </button>
+                  <div className={styles["numeroDiv"]}>
+                    <p>{contadores}</p>
+                  </div>
+                  <button
+                    onClick={() => decrementar()}
+                    className={styles["botaoAdicionar"]}
+                  >
+                    -
+                  </button>
+                </div>
+              </li>
+            </li>
+            <li className={styles["containerPreco"]}>R$: {precoTela.toFixed(2)}</li>
+            <li className={styles["lixeira"]}>
+              <img
+                className={styles["lixoimg"]}
+                src={lixeira}
+                alt="Cancelar Pedido"
+                onClick={() => handleOpenCancelModal(morangoDataUm.id)} // Abre o modal de cancelamento para o item específico
+              />
+            </li>
+          </ul>
           <div className={styles["linha"]}></div>
           <div className={styles["container_itens"]}>
             <p>Adicionar itens...</p>
@@ -132,8 +146,10 @@ const Detalhes = () => {
           <div className={styles["container_lembrete"]}>
             <p className={styles["gambiarraDois"]}>Lembrete: Pagamento na retirada</p>
             <div>
-              <button className={styles["container_botaozinho"]} onClick={handleOpenModal}>Encomendar</button>
-              <RetiradaModal isOpen={isModalOpen} onClose={handleCloseModal} />
+              <button className={styles["container_botaozinho"]} onClick={handleOpenModal}>
+                Encomendar
+              </button>
+              <RetiradaModal isOpen={isModalOpen} onClose={handleCloseModal} preco={precoTela} adicional={data.adicionais} index={data.id} />
             </div>
           </div>
           <p className={styles["gambiarra"]}>Local da Retirada: Rua Haddock Lobo</p>

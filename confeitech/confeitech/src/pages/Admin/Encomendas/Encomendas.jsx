@@ -4,6 +4,7 @@ import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import CardEncomendaAceita from "../../../components/CardEncomendaAceita/CardEncomendaAceita";
 import CardEncomendaSolicitacao from "../../../components/CardEncomendaSolicitacao/CardEncomendaSolicitacao";
 import api from "../../../api";
+import { toast, ToastContainer } from "react-toastify";
 
 
 const Encomendas = () => {
@@ -13,7 +14,7 @@ const Encomendas = () => {
 
     const getSolicitacao = () => {
         api
-            .get("/encomendas")
+            .get("/encomendas/aguardando")
             .then((response) => {
                 const { data } = response;
                 console.log(data);
@@ -28,7 +29,7 @@ const Encomendas = () => {
 
     const getAceita = () => {
         api
-            .get("/encomendas")
+            .get("/encomendas/aceitas")
             .then((response) => {
                 const { data } = response;
                 console.log(data);
@@ -45,7 +46,7 @@ const Encomendas = () => {
         if (aceitasData) {
             if (Array.isArray(aceitasData)) {
                 return aceitasData?.map((data, index) => (
-                    <CardEncomendaAceita key={index} status={data.andamento} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.bolo.descricao} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.bolo.preco} />
+                    <CardEncomendaAceita key={index} id={data.id} status={data.andamento} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.bolo.descricao} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.preco} getAceita={getAceita} />
                 ));
             }
         }
@@ -56,7 +57,7 @@ const Encomendas = () => {
             if (Array.isArray(solicitacaoData)) {
                 console.log("batata")
                 return solicitacaoData?.map((data, index) => (
-                    <CardEncomendaSolicitacao key={index} index={data.id} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.bolo.descricao} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.bolo.preco}
+                    <CardEncomendaSolicitacao key={index} index={data.id} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.bolo.descricao} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.preco} getSolicitacao={getSolicitacao}
                     />
                 ));
             }
@@ -69,7 +70,7 @@ const Encomendas = () => {
         } else {
             getSolicitacao();
         }
-    }, [currentView]);
+    }, [currentView, CardEncomendaAceita, CardEncomendaSolicitacao, toast, ToastContainer, toast.success, toast.error]);
 
 
     return (

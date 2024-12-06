@@ -4,6 +4,7 @@ import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import excluir from "../../../utils/assets/excluir.png";
 import editar from "../../../utils/assets/editar.png";
 import api from "../../../api";
+import { ToastContainer, toast } from "react-toastify";
 
 const Ingredientes = () => {
   const estiloTabela = {
@@ -96,10 +97,12 @@ const Ingredientes = () => {
       })
       .then(() => {
         console.log("Salvo");
+        toast.success("Adicional salvo com sucesso!");
         getData(); // Atualiza a lista completa de ingredientes
         closeModalEdit();
       })
       .catch((error) => {
+        toast.error("Erro ao salvar adicional!");
         console.log(error);
       });
   };
@@ -114,11 +117,13 @@ const Ingredientes = () => {
       .delete("/adicionais/" + selectedId)
       .then(() => {
         console.log("Excluído");
+        toast.success("Adicional excluído com sucesso!");
         getData();
         closeModal();
       })
       .catch((error) => {
         console.log(error);
+        toast.error("Erro ao excluir adicional!");
       });
   }
 
@@ -131,10 +136,12 @@ const Ingredientes = () => {
       })
       .then(() => {
         console.log("Adicionado");
+        toast.success("Adicional adicionado com sucesso!");
         getData();
         closeModalAdd();
       })
       .catch((error) => {
+        toast.error("Erro ao adicionar adicional!");
         console.log(error);
       });
   };

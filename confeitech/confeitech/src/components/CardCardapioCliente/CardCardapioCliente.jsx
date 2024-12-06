@@ -4,17 +4,17 @@ import bolo from "../../utils/Detalhes/Bolo-Sensacao-01.webp"
 import boloMorango from "../../utils/Detalhes/bolo-de-morango-aniversario.jpg"
 import boloFloresta from "../../utils/Detalhes/floresta-negra-cod-374.jpg"
 import boloChocolate from "../../utils/Detalhes/boloChocolate.jpg"
-
+import { useNavigate } from "react-router-dom";
 
 
 const CardCardapio = ({ index, nome, descricao, preco }) => {
-
+    const navigate = useNavigate();
 
 
     const goToCardapio = () => {
         sessionStorage.setItem("index",index)
 
-        window.location.href = '/encomendaCliente'; // Redireciona para a página "/cardapio"
+        navigate('/encomendaCliente'); // Redireciona para a página "/cardapio"
 
     };
     return (

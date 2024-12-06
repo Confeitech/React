@@ -1,35 +1,51 @@
 // src/components/RetiradaModal.jsx
 import { React, useState, useEffect } from 'react';
 import styles from "./RetiradaModal.module.css";
-// import api from "../../../api";
+import api from '../../../../api';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
-const RetiradaModal = ({ isOpen, onClose }) => {
+const RetiradaModal = ({ isOpen, onClose, preco, adicional, index }) => {
+    const navigate = useNavigate();
+    const [dia, setDia] = useState()
+    const [mes, setMes] = useState()
+    const [ano, setAno] = useState()
 
-    // // const enviar = () =>{
-    // //     api
-    // //     .post("/encomendas", {
-    // //         // preco: ,
-    // //         // "observacoes": "string",
-    // //         // "bolo": 0,
-    // //         // "adicionais": "string",
-    // //         // "andamento": "AGUARDANDO",
-    // //         // "dataCriacao": "2024-12-05",
-    // //         // "dataRetirada": "2024-12-05",
-    // //         // "user": 0
-    // //     })
-    // //     .then(() => {
-    // //       console.log("Adicionado");
-    // //       getData();
-    // //       closeModalAdd();
-    // //     })
-    // //     .catch((error) => {
-    // //       console.log(error);
-    // //     });
-    // }
+    const enviar = () => {
+        const info = JSON.parse(sessionStorage.getItem("props"));
+        
+        // Formatar a data no formato "YYYY-MM-DD"
+        const dataFormatada = `${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`;
+    
+        api
+            .post("/encomendas", {
+                preco: preco,
+                observacoes: info.observacoes,
+                bolo: index,
+                adicionais: "string",
+                dataRetirada: dataFormatada, 
+                user: 3
+            })
+            .then(() => {
+                console.log("Adicionado");
+                onClose();
+                toast.success("Encomenda realizada com sucesso!");
+                sessionStorage.removeItem("props");
+                navigate("/minhasEncomendas");
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error("Erro ao realizar encomenda!");
+            });
+    }
     
 
-    const [dia,setdia] = useState()
-    const [mes,setmes] =useState()
+    useEffect(() => {
+        console.log("Preco: ", preco);
+        console.log("Adicional: ", adicional);
+        console.log("Index: ", index);
+    }, [isOpen]);
+
 
 
 
@@ -44,13 +60,23 @@ const RetiradaModal = ({ isOpen, onClose }) => {
                 </p>
 
                 <div className={styles.options}>
-                    <input className={styles["horario"]} type="text" placeholder="Dia" onChange={(e) => setdia(e.target.value)}/>
-                    <input className={styles["horario"]} type="text" placeholder="Mês"  onChange={(e) => setmes(e.target.value)}/>
-                
+                    <input className={styles["horario"]} type="text" placeholder="Dia" onChange={(e) => setDia(e.target.value)} />
+                    <select
+                        className={styles["horario"]}
+                        onChange={(e) => setMes(e.target.value)}
+                        value={mes}
+                    >
+                        {[...Array(12)].map((_, index) => (
+                            <option key={index + 1} value={index + 1}>
+                                {index + 1}
+                            </option>
+                        ))}
+                    </select>
+                    <input className={styles["horario"]} type="text" placeholder="Ano" onChange={(e) => setAno(e.target.value)} />
                 </div>
 
 
-                <button className={styles.encomendarButton} onClick={onClose}>
+                <button className={styles.encomendarButton} onClick={enviar}>
                     Encomendar
                 </button>
             </div>
