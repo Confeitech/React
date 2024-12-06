@@ -32,10 +32,12 @@
     font-style: normal;
     margin-top: 1vw;
     height: 2vw;
+    display: flex;
+    align-items: center;
 }
 
 .dinheiro {
-    font-size: 1.5vw;
+    font-size: 1.3vw;
     color: rgba(27, 85, 25, 1);
 }
 
@@ -85,7 +87,9 @@ li {
     align-items: center;
     display: flex;
     width: 30vw;
-    margin-top: -2vw;
+    margin-top: -1vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
 }
 
@@ -169,6 +173,8 @@ li {
     width: 41vw;
     height: 6vw;
     display: flex;
+    
+    
 }
 
 .ob {
