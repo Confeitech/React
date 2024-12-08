@@ -45,22 +45,20 @@ const CardapioCliente = () => {
                             <h1 className={styles["h1_cardapio"]}>Cardápio de Delicias</h1>
                         </span>
                     </div>
+                    
                     <div className={styles["table"]}>
-                        {
-                            cardsData &&
-                            cardsData.map((data,index) =>(
-        
-                            < CardCliente 
-                            index={data.id}
-                            nome={data.nome}
-                            descricao={data.descricao}
-                            preco={data.preco}
-                            />
-                            ))
-                        }
-
-
-                    </div>
+            {cardsData &&
+              cardsData.map((data, index) => (
+                <div key={index} className={styles["divCardapio2"]}>
+                  <CardCliente
+                    index={data.id}
+                    nome={data.nome}
+                    descricao={data.descricao}
+                    preco={data.preco}
+                  />
+                </div>
+              ))}
+          </div>
                 </div>
             </div>
         </>

@@ -13,19 +13,20 @@ const RetiradaModal = ({ isOpen, onClose, preco, adicional, index }) => {
 
     const enviar = () => {
         const info = JSON.parse(sessionStorage.getItem("props"));
-        
+
         // Formatar a data no formato "YYYY-MM-DD"
-        const dataFormatada = `${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`;
-    
+        const dataFormatada = `${ano}-${mes.padStart(2, '2')}-${dia.padStart(2, '0')}`;
+
         api
             .post("/encomendas", {
                 preco: preco,
                 observacoes: info.observacoes,
                 bolo: index,
                 adicionais: "string",
-                dataRetirada: dataFormatada, 
+                dataRetirada: dataFormatada,
                 user: 3
             })
+
             .then(() => {
                 console.log("Adicionado");
                 onClose();
@@ -34,11 +35,27 @@ const RetiradaModal = ({ isOpen, onClose, preco, adicional, index }) => {
                 navigate("/minhasEncomendas");
             })
             .catch((error) => {
+                console.log({
+                    preco: preco,
+                    observacoes: info.observacoes,
+                    bolo: index,
+                    adicionais: "string",
+                    dataRetirada: dataFormatada,
+                    user: 3
+                });
                 console.log(error);
+                console.log({
+                    preco: preco,
+                    observacoes: info.observacoes,
+                    bolo: index,
+                    adicionais: "string",
+                    dataRetirada: dataFormatada,
+                    user: 3
+                })
                 toast.error("Erro ao realizar encomenda!");
             });
     }
-    
+
 
     useEffect(() => {
         console.log("Preco: ", preco);

@@ -18,6 +18,7 @@ const CardCardapio = ({ index, nome, descricao, preco }) => {
 
     };
     return (
+        
         <div className={styles["row"]}>
             <div className={styles["card"]}>
                 <div className={styles["imagem"]}>

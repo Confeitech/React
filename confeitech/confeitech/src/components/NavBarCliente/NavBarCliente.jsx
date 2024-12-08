@@ -33,8 +33,7 @@ const NavBarCliente = () => {
             </a>
           ))}
           <div className={styles["icons"]}>
-            <img className={styles["carrinho"]} src={carrinho} alt="Carrinho" />
-            <img className={styles["pessoa"]} src={pessoa} alt="Perfil" />
+            
           </div>
         </div>
       </div>
