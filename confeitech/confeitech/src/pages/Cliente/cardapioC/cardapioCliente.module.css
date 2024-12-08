@@ -88,12 +88,20 @@ html {
 }
 
 .table {
-    display: flex;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    min-width: 100%;
     height: 80%;
-    flex-direction: column;
     overflow-y: scroll;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+.divCardapio2{
+    display: flex;
+    min-width: 25%;
+    min-height: 375px;
+    max-height: 375px;
+    margin-top: 10px;
 }
 
 .table::-webkit-scrollbar {

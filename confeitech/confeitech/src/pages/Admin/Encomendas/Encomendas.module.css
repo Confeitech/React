@@ -12,9 +12,10 @@
     height: 80vh;
     justify-content: center;
     align-items: end;
+
 }
 
-.bordao{
+.bordao {
     color: white;
 }
 
@@ -35,8 +36,8 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 10px;
-   font-weight: 100;
-   color: white;
+    font-weight: 100;
+    color: white;
 }
 
 .bordao {

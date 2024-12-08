@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./RelatorioAdmin.module.css";
 import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import GraficoArea from "../../../components/GraficoArea/GraficoArea";
 import GraficoBarra from "../../../components/GraficoBarra/GraficoBarra";
+import api from "../../../api";
 
 const RelatorioAdmin = () => {
+    const [ cardsData, setCardsData ] = useState();
+
+    useEffect(() => {
+        api.get("/dashboard")
+            .then((response) => {
+                const { data } = response;
+                console.log(data);
+                setCardsData(data);
+                console.log(cardsData); 
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
     
 
     return (
@@ -22,9 +37,9 @@ const RelatorioAdmin = () => {
                         </div>
                         <div className={styles["card"]}>
                             <div className={styles["block"]}>
-                                <h4 className={styles["titulo"]}>Quantidade de encomendas para hoje</h4>
+                                <h4 className={styles["titulo"]}>Quantidade de solicitações não confirmadas</h4>
                                 <h1 className={styles["textoAzul"]}>10</h1>
-                                <a className={styles["link"]}>Quantidade proxima do limite</a>
+                                <a className={styles["link"]}>Vizualizar</a>
                             </div>
                         </div>
                         <div className={styles["cardRelatorio"]}>

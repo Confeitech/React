@@ -1,142 +1,195 @@
-
-import styles from "./EncomendaCliente.module.css"
+import { React, useState, useEffect } from 'react';
+import styles from "./EncomendaCliente.module.css";
 import NavBarCliente from "../../components/NavBarCliente/NavBarCliente";
-import React, { useState } from 'react';
-import bolo from "../../utils/Detalhes/Bolo-Sensacao-01.webp"
+import bolo from "../../utils/Detalhes/Bolo-Sensacao-01.webp";
+import api from "../../api";
+import { useNavigate } from 'react-router-dom';
 
 const EncomendaCliente = () => {
+    const [morangoData, setMorangoData] = useState([]);
+    const [morangoDataUm, setMorangoDataUm] = useState([]);
+    const [morangoDataDois, setMorangoDataDois] = useState([]);
+    const [contadores, setContadores] = useState({}); // Estado para armazenar os contadores individuais
+    const [preco, setPreco] = useState(0);
+    const navigate = useNavigate();
+    const [precoTela, setPrecoTela] = useState(0);
+    const [observacoes, setObservacoes] = useState("");
 
-    
-    
-  
-        // Contador 1
-        const [count, setCount] = useState(0);
-        const aumentar = () => {
-          setCount(count + 1);
-        };
-        const diminuir = () => {
-          setCount(count - 1);
-        };
-      
-        // Contador 2
-        const [countDois, setCountDois] = useState(0);
-        const aumentarDois = () => {
-          setCountDois(countDois + 1); 
-        };
-        const diminuirDois = () => {
-          setCountDois(countDois - 1); 
-        };
-      
-        // Contador 3
-        const [countTres, setCountTres] = useState(0);
-        const aumentarTres = () => {
-          setCountTres(countTres + 1); 
-        };
-        const diminuirTres = () => {
-          setCountTres(countTres - 1); 
-        };
-    
+    // Recuperar valores de adicionais
+    useEffect(() => {
+        api.get("/adicionais")
+            .then((response) => {
+                const { data } = response;
+                setMorangoData(data);
+                // Inicializar contadores com 0 para cada item
+                const initialCounters = data.reduce((acc, item) => {
+                    acc[item.id] = 0; // Supondo que cada item tem um campo "id"
+                    return acc;
+                }, {});
+                setContadores(initialCounters);
+            })
+            .catch((error) => console.log(error));
+    }, []);
 
-        
-            const goToCardapioDois = () => {
-                window.location.href = '/detalhesCliente'; // Redireciona para a página "/cardapio"
-              };
-    
+    // Recuperar valores de bolos
+    useEffect(() => {
+        getBolo()
+        api.get("/cakes")
+            .then((response) => {
+                const { data } = response;
+                setMorangoDataUm(data);
+            })
+            .catch((error) => console.log(error));
+    }, []);
+
+    useEffect(() => {
+        console.log(contadores);
+
+        let total = 0;
+        for (const [key, value] of Object.entries(contadores)) {
+            const item = morangoData.find((data) => data.id === Number(key));
+            if (item) {
+                total += value * Number(item.preco);
+            }
+        }
+        setPrecoTela(total + preco); // Atualiza o estado
+    }, [contadores, preco]); // Adicione dependências relevantes
+
+
+
+    // Função para incrementar o contador
+    const incrementar = (id) => {
+        setContadores((prev) => ({
+            ...prev,
+            [id]: prev[id] + 1,
+        }));
+    };
+
+    // Função para decrementar o contador
+    const decrementar = (id) => {
+        setContadores((prev) => ({
+            ...prev,
+            [id]: prev[id] > 0 ? prev[id] - 1 : 0, // Evitar valores negativos
+        }));
+    };
+
+    const getBolo = () => {
+
+        let index = sessionStorage.getItem("index");
+
+        api.get("/cakes/" + index)
+            .then((response) => {
+                const { data } = response;
+                console.log(data);
+                console.log(index)
+                setMorangoDataDois(data);
+                setPreco(data.preco);
+                precoTela = data.preco;
+                console.log(precoTela);
+            })
+            .catch((error) => console.log(error));
+    }
+
+
+    const goToCardapioDois = () => {
+        let envio = {
+            id: morangoDataDois.id,
+            preco: precoTela,
+            adicionais: contadores,
+            observacoes: observacoes
+        }
+        sessionStorage.setItem("props", JSON.stringify(envio));
+        navigate('/detalhesCliente'); // Redireciona para a página "/cardapio"
+    };
+
     return (
         <>
             <NavBarCliente />
             <div className={styles["container_pai"]}>
                 <div className={styles["container_foto"]}>
-                <img className ={styles["bolofoto"]} src={bolo}/>
+                    <img className={styles["bolofoto"]} src={bolo} />
                 </div>
 
                 <div className={styles["container_elementos"]}>
-                    <h1 className={styles["container_titulo"]}>Bolo sensação</h1>
-                    <p className={styles["container_paragrafo"]}>O bolo Sensação é uma sobremesa que combina o sabor marcante do chocolate com a frescura dos morangos. Feito com camadas de massa de chocolate úmida.</p>
-                
-                <p className={styles["dinheiro"]}>R$:00.00</p>
-                
+                    <h1 className={styles["container_titulo"]}>
+                        {
+                            morangoDataDois?.nome
+
+                        }
+                    </h1>
+                    <p className={styles["container_paragrafo"]}>
+                        {
+                            morangoDataDois?.descricao
+                        }
+                    </p>
+
+                    <p className={styles["dinheiro"]}>
+                        <p>R$
+                            {
+                                precoTela.toFixed(2) // Exibe o preço formatado com 2 casas decimais
+                            }
+                        </p>
+
+                    </p>
+
                     <div className={styles["container_encomenda"]}>
-                        <p className={styles["paragrafoTamanho"]} >Tamanho:1,0Kg</p>
+                        <p className={styles["paragrafoTamanho"]}>Tamanho:1,0Kg</p>
                         <button onClick={goToCardapioDois} className={styles["container_botao"]}>Encomendar</button>
                     </div>
-                    <div className={styles["container_lista"]}>
+                    {/* <div className={styles["container_lista"]}>
                         <button className={styles["container_kilos"]}>1.5Kg</button>
                         <button className={styles["container_kilos"]}>2.0Kg</button>
                         <button className={styles["container_kilos"]}>1.0Kg</button>
                         <button className={styles["container_kilos"]}>2.5Kg</button>
-                    </div>
-
+                    </div> */}
 
                     <h3 className={styles["naosei"]}>Adicionais</h3>
                     <div className={styles["container_paiAdicionar"]}>
-                        <div className={styles["container_filhoAdicionar"]}>
-                            <div className={styles["container_adicional"]}>
-                                <p className={styles["Morango"]} >Morango: R$:00,00</p>
-                            </div>
-
-                            <div className={styles["container_botaoPaiAdicionarBanana"]}>
-                                <button onClick={aumentar} className={styles["botaoAdicionar"]}>+</button>
-                                <div className={styles["num"]}>
-                                <p className={styles["paragrafoUm"]}>{count}</p>
+                        {morangoData && morangoData.map((data) => (
+                            <div key={data.id} className={styles["container_filhoAdicionar"]}>
+                                <div className={styles["container_adicional"]}>
+                                    <p className={styles["Morango"]}>
+                                        {data.nome}: {data.preco.toFixed(2)}
+                                    </p>
                                 </div>
-                                <button onClick={diminuir} className={styles["botaoAdicionar"]}>-</button>
-                            </div>
-                        </div>
-                        <div className={styles["container_filhoAdicionar"]}>
-                            <div className={styles["container_adicional"]}>
-                                <p className={styles["Morango"]} >Morango: R$00,00</p>
-                            
-                            </div>
-
-                            <div className={styles["container_botaoPaiAdicionarBanana"]}>
-                                <button onClick={aumentarDois} className={styles["botaoAdicionar"]}>+</button>
-                                <div className={styles["num"]}>
-                                <p className={styles["paragrafoUm"]}>{countDois}</p>
+                                <div className={styles["container_botaoPaiAdicionarBanana"]}>
+                                    <button
+                                        onClick={() => incrementar(data.id)}
+                                        className={styles["botaoAdicionar"]}
+                                    >
+                                        +
+                                    </button>
+                                    <div className={styles["num"]}>
+                                        <p className={styles["paragrafoUm"]}>
+                                            {contadores[data.id] || 0} {/* Exibe o contador correto */}
+                                        </p>
+                                    </div>
+                                    <button
+                                        onClick={() => decrementar(data.id)}
+                                        className={styles["botaoAdicionar"]}
+                                    >
+                                        -
+                                    </button>
                                 </div>
-                                <button onClick={diminuirDois} className={styles["botaoAdicionar"]}>-</button>
                             </div>
-                        </div>
-
-                        <div className={styles["container_filhoAdicionar"]}>
-                            <div className={styles["container_adicional"]}>
-                                <p className={styles["Morango"]} >Morango: R$00,00</p>
-                                
-                            </div>
-
-                            <div className={styles["container_botaoPaiAdicionarBanana"]}>
-                                <button onClick={aumentarTres} className={styles["botaoAdicionar"]}>+</button>
-                                <div className={styles["container_zero"]}>
-                                <div className={styles["num"]}>
-                                <p className={styles["paragrafoUm"]}>{countTres}</p>
-                                </div>
-                                </div>
-                                <button onClick={diminuirTres} className={styles["botaoAdicionar"]}>-</button>
-                            </div>
-                        </div>
-
-                    
+                        ))}
                     </div>
+
                     <p>Alguma observação?</p>
                     <div className={styles["container_ob"]}>
-                    
-                    <div className="observacao">
-                    <input className={styles["ob"]} type="text" placeholder="Ex: tenho intolerância a lactose, gluten etc. "></input>
-                    </div>
-                    
-
+                        <div className="observacao">
+                            <input className={styles["ob"]} type="text" onChange={(e) => setObservacoes(e.target.value)} placeholder="Ex: tenho intolerância a lactose, gluten etc. "></input>
+                        </div>
                     </div>
 
-                <div className={styles["container_retirada"]}>
-                    <p className={styles["container_gamb"]}>Lembrete: Pagamento na retirada</p>
-                <button onClick={goToCardapioDois} className={styles["container_botaodois"]}>Encomendar</button>
-                </div>
-
-
+                    <div className={styles["container_retirada"]}>
+                        <p className={styles["container_gamb"]}>Lembrete: Pagamento na retirada</p>
+                        <button onClick={goToCardapioDois} className={styles["container_botaodois"]}>Encomendar</button>
+                    </div>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default EncomendaCliente;

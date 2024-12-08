@@ -1,21 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Encomendas.module.css";
 import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import CardEncomendaAceita from "../../../components/CardEncomendaAceita/CardEncomendaAceita";
 import CardEncomendaSolicitacao from "../../../components/CardEncomendaSolicitacao/CardEncomendaSolicitacao";
+import api from "../../../api";
+import { toast, ToastContainer } from "react-toastify";
 
-
-
-const Aceitas = () => {
-    return <CardEncomendaAceita />;
-};
-
-const Solicitacoes = () => {
-    return <CardEncomendaSolicitacao />;
-};
 
 const Encomendas = () => {
+    const [aceitasData, setAceitasData] = useState();
+    const [solicitacaoData, setSolicitacaoData] = useState();
     const [currentView, setCurrentView] = useState("aceitas");
+
+    const getSolicitacao = () => {
+        api
+            .get("/encomendas/aguardando")
+            .then((response) => {
+                const { data } = response;
+                console.log(data);
+                console.log("batata")
+                setSolicitacaoData(data);
+                showSolicitacoes();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    const getAceita = () => {
+        api
+            .get("/encomendas/aceitas")
+            .then((response) => {
+                const { data } = response;
+                console.log(data);
+                console.log("tomate")
+                setAceitasData(data);
+                showAceitas();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    const showAceitas = () => {
+        if (aceitasData) {
+            if (Array.isArray(aceitasData)) {
+                return aceitasData?.map((data, index) => (
+                    <CardEncomendaAceita key={index} id={data.id} status={data.andamento} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.observacoes} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.preco} getAceita={getAceita} />
+                ));
+            }
+        }
+    };
+
+    const showSolicitacoes = () => {
+        if (solicitacaoData) {
+            if (Array.isArray(solicitacaoData)) {
+                console.log("batata")
+                return solicitacaoData?.map((data, index) => (
+                    <CardEncomendaSolicitacao key={index} index={data.id} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.observacoes} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.preco} getSolicitacao={getSolicitacao}
+                    />
+                ));
+            }
+        }
+    };
+
+    useEffect(() => {
+        if (currentView === "aceitas") {
+            getAceita();
+        } else {
+            getSolicitacao();
+        }
+    }, [currentView, CardEncomendaAceita, CardEncomendaSolicitacao, toast, ToastContainer, toast.success, toast.error]);
+
 
     return (
         <div className={styles["body"]}>
@@ -36,7 +92,10 @@ const Encomendas = () => {
                         </div>
                     </div>
                     <div className={styles["table"]}>
-                        {currentView === "solicitacoes" ? <Solicitacoes /> : <Aceitas />}
+                        {currentView === "solicitacoes" ?
+                            showSolicitacoes()
+                            :
+                            showAceitas()}
                     </div>
                 </div>
             </div>

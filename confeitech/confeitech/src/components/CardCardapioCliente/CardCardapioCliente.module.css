@@ -5,12 +5,13 @@
 
 .row {
     display: flex;
+    
 }
 
 .card {
     display: flex;
     min-height: 350px;
-    width: 24%;
+    width: 100%;
     background-color: white;
     border-radius: 10px;
     flex-direction: column;

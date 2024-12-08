@@ -1,154 +1,117 @@
+/* Estrutura geral */
 .cardapio {
     display: flex;
-    width: 100%;
-    height: 80vh;
-    justify-content: center;
-    align-items: end;
-    
-
-}
-
-.content {
-    display: flex;
-    align-items: center;
     flex-direction: column;
-    width: 80%;
-    height: 100%;
-   
-}
-
-.text {
-    display: flex;
-    height: 20%;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content {
     width: 100%;
+    text-align: center;
+  }
+  
+  .text {
+    margin-bottom: 20px;
+  }
+  
+  .span_cardapio2 {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-}
-
-.span_cardapio {
-    display: flex;
-    border-radius: 0.7vw;
-    align-items: center;
-    height: 3vw;
-    background-color: white;
-    width: 15vw;
-    justify-content: center;
-
-
-}
-
-.span_cardapio2 {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-    margin-left: vw;
-
-
-}
-
-.span_cardapioRight {
-    display: flex;
-    width: 33%;
-    height: 100%;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.button_cardapio {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-    height: 55%;
-    background-color: #B00000;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    gap: 10px;
+  }
+  
+  .coroa {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .h1_cardapio {
+    font-size: 28px;
     font-weight: bold;
-}
-
-.span_cardapio .button_cardapio:hover {
-    background-color: #830000;
-    transition: 0.5s;
-}
-
-.text .h1_cardapio {
+    color: #333;
+    margin: 0;
+  }
+  
+  /* Cards de encomendas */
+  .encomendasPai {
     display: flex;
-    height: 30%;
-    width: 40%;
-}
-
-.coroa {
-    display: flex;
-    height: 30%;
-}
-
-.encomendasPai {
-    background-color: #F3F3F3;
-    width: 80vw;
-    height: 10vw;
-    display: flex;
-    border: 1px solid black;
-}
-
-.bolofoto {
-    width: 10vw;
-    height: 10vw;
-}
-
-.information {
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
-    align-items: center;
-    justify-content: center;
-}
-
-.name {
-    display: flex;
-    width: 43vw;
-    justify-content: end;
-    flex-direction: column;
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    justify-content: space-evenly;
-    height: 7.5vw;
-}
-
-.cancelarPedido {
-    width: 10vw;
-    height: 2vw;
-    background: linear-gradient(to bottom, #970404, #d33131);
-    font-weight: 900;
-    border-radius: 0.5vw;
-    color: white;
-    font-size: 1vw;
-}
-
-.total {
     align-items: flex-start;
-    display: flex;
-    width: 10vw;
-    margin-top: 1.5vw;
-
-}
-
-.pretin {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .bolofoto {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .information {
+    flex: 1;
+    text-align: left; /* Alinhar o texto à esquerda */
+  }
+  
+  .bolin {
+    font-size: 18px;
     font-weight: bold;
-    font-size: 1.2vw;
-}
-
-.bolin {
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  .pretin {
+    font-size: 16px;
+    color: #777;
+    margin: 2px 0;
+  }
+  
+  .name {
     display: flex;
-    align-items: center;
-    width: 11vw;
-    font-family: "Pacifico", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 1.3vw;
-}
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+  }
+  
+  .total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .cancelarPedido {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #e63946;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancelarPedido:hover {
+    background-color: #d62839;
+  }
+  
+  /* Adicionando imagens como background para o bolo */
+  .bolofoto {
+    background-color: #f8f8f8;
+    border: 2px solid #ddd;
+  }
+  

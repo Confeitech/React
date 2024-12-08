@@ -1,41 +1,58 @@
 import React from "react";
 import styles from "./CardCardapio.module.css";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import imgBolo from "../../utils/assets/fatia-de-bolo-de-chocolate-recheado-com-creme-marrom-e-morango-por-cima_993044-36.avif"
+import imgBolo from "../../utils/assets/fatia-de-bolo-de-chocolate-recheado-com-creme-marrom-e-morango-por-cima_993044-36.avif";
+import api from "../../api";
 
-const CardCardapio = (
-    { nome,
-        descricao,
-        preco }
-) => {
-    const navigate = useNavigate(); // Hook do React Router para navegação
+const CardCardapio = ({ index, nome, descricao, preco }) => {
+  const [image, setimage] = useState();
+  const navigate = useNavigate();
 
-    const handleEditCakeClick = () => {
-        navigate('/modificar-bolo'); // Navega para a página /about
-    };
+  const handleEditCakeClick = (index) => {
+    sessionStorage.setItem("index", index);
+    navigate("/modificar-bolo");
+  };
 
-    return (
-        <div className={styles["row"]}>
-            <div className={styles["card"]}>
-                <div className={styles["imagem"]}>
-                    <img className={styles["imagemBolo"]} src={imgBolo} alt="Bolo de chocolate" />
-                </div>
-                <div className={styles["details"]}>
-                    <h3 className={styles["h3_cardCardapio"]}>
-                        {nome || "N\A"}
-                    </h3>
-                    <h5 className={styles["h5_cardCardapio"]}>
-                        {descricao || "N\A"}
-                    </h5>
-                </div>
-                <div className={styles["price"]}>
-                    <h2>R$ {preco || "N\A"}
-                    </h2>
-                    <button className={styles["buttonEdit"]} onClick={handleEditCakeClick}>Modificar Bolo</button>
-                </div>
-            </div>
+  useEffect(() => {
+    api
+      .get("/cakes/imagem/" + index, { responseType: "blob" })  // Define o tipo de resposta como "blob"
+      .then((response) => {
+        const imageUrl = URL.createObjectURL(response.data);  // Cria uma URL a partir do Blob
+        setimage(imageUrl);  // Armazena a URL no estado
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [index]);  // Adicionando index como dependência para re-fetch se necessário
+
+
+  return (
+    <div className={styles["row"]}>
+      <div className={styles["card"]}>
+        <div className={styles["imagem"]}>
+          <img
+            className={styles["imagemBolo"]}
+            src={image}
+            alt="Bolo de chocolate"
+          />
         </div>
-    );
+        <div className={styles["details"]}>
+          <h3 className={styles["h3_cardCardapio"]}>{nome || "NA"}</h3>
+          <h5 className={styles["h5_cardCardapio"]}>{descricao || "NA"}</h5>
+        </div>
+        <div className={styles["price"]}>
+          <h2>R$ {preco || "NA"}</h2>
+          <button
+            className={styles["buttonEdit"]}
+            onClick={() => handleEditCakeClick(index)}
+          >
+            Modificar Bolo
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default CardCardapio;

@@ -1,0 +1,109 @@
+
+.card {
+    display: flex;
+    width: 100%;
+    min-height: 55px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .5);
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.detailsCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 40%;
+    margin-left: 10%;
+}
+
+.buttonsCard {
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonsCard button {
+    display: flex;
+    width: 30%;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    border: 0px;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: black;
+    color: #fff;
+}
+
+.number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 20%;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.meio {
+    display: flex;
+    height: 100%;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonsSpace {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buttonAdd {
+    display: flex;
+    width: 40%;
+    height: 80%;
+    background-color: #f1f1f1;
+    color: #000;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 0px;
+    font-weight: bold;
+}
+
+.check {
+    display: flex;
+    width: 100%;
+    height: 13%;
+    justify-content: center;
+    align-items: center;
+}
+
+.fix {
+    display: flex;
+    width: 40%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.colum {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imagens {
+    display: flex;
+    width: 80%;
+    height: 60%;
+}
