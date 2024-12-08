@@ -46,7 +46,7 @@ const Encomendas = () => {
         if (aceitasData) {
             if (Array.isArray(aceitasData)) {
                 return aceitasData?.map((data, index) => (
-                    <CardEncomendaAceita key={index} id={data.id} status={data.andamento} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.observacoes} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.preco} getAceita={getAceita} />
+                    <CardEncomendaAceita key={index} id={data.id} indexBolo={data.bolo.id} status={data.andamento} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.observacoes} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.preco} peso={data.peso} adicionais={data.adicionais} getAceita={getAceita} />
                 ));
             }
         }
@@ -57,7 +57,7 @@ const Encomendas = () => {
             if (Array.isArray(solicitacaoData)) {
                 console.log("batata")
                 return solicitacaoData?.map((data, index) => (
-                    <CardEncomendaSolicitacao key={index} index={data.id} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.observacoes} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.preco} getSolicitacao={getSolicitacao}
+                    <CardEncomendaSolicitacao key={index} index={data.id} indexBolo={data.bolo.id} nomeBolo={data.bolo.nome} nomeCliente={data.userDTO.nome} descricao={data.observacoes} dataPedido={data.dataCriacao} dataRetirada={data.dataRetirada} preco={data.preco} peso={data.peso} adicionais={data.adicionais} getSolicitacao={getSolicitacao}
                     />
                 ));
             }

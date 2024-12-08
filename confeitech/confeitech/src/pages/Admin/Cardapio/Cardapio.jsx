@@ -4,6 +4,7 @@ import styles from "./Cardapio.module.css";
 import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import CardCardapio from "../../../components/CardCardapio/CardCardapio";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Cardapio = () => {
   const navigate = useNavigate(); // Hook do React Router para navegação
@@ -11,6 +12,17 @@ const Cardapio = () => {
   const handleClick = () => {
     navigate("/novo-bolo"); // Navega para a página /about
   };
+
+  const desfazer = () => {
+    api.patch("/cakes/desfazer", {
+      id: 1,
+    }).then((response) => {
+      toast.success("Desfeito com sucesso!");
+      window.location.reload();
+    }).catch((error) => {
+      toast.error("Não há bolo para ser desfeito!");
+    });
+  }
 
   const [cardsData, setCardsData] = useState();
 
@@ -47,6 +59,12 @@ const Cardapio = () => {
                 onClick={handleClick}
               >
                 NOVO BOLO +
+              </button>
+              <button
+                className={styles["button_cardapio"]}
+                onClick={desfazer}
+              >
+                Desfazer
               </button>
             </span>
           </div>

@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./CardCardapioCliente.module.css";
 import bolo from "../../utils/Detalhes/Bolo-Sensacao-01.webp"
 import boloMorango from "../../utils/Detalhes/bolo-de-morango-aniversario.jpg"
 import boloFloresta from "../../utils/Detalhes/floresta-negra-cod-374.jpg"
 import boloChocolate from "../../utils/Detalhes/boloChocolate.jpg"
 import { useNavigate } from "react-router-dom";
+import api from "../../api";
 
 
 const CardCardapio = ({ index, nome, descricao, preco }) => {
     const navigate = useNavigate();
+    const [image, setimage] = React.useState();
 
 
     const goToCardapio = () => {
@@ -17,12 +19,25 @@ const CardCardapio = ({ index, nome, descricao, preco }) => {
         navigate('/encomendaCliente'); // Redireciona para a página "/cardapio"
 
     };
+
+    useEffect(() => {
+        api
+        .get("/cakes/imagem/" + index, { responseType: "blob" })  // Alterado para GET e responseType "blob"
+        .then((response) => {
+            const imageUrl = URL.createObjectURL(response.data);  // Cria uma URL a partir do Blob
+            setimage(imageUrl);  // Armazena a URL no estado
+            console.log(imageUrl);
+        })
+        .catch((error) => {
+            console.error("Erro ao buscar a imagem:", error);
+        });
+    }, [index]);
     return (
         
         <div className={styles["row"]}>
             <div className={styles["card"]}>
                 <div className={styles["imagem"]}>
-                    <img className={styles["fotosbolo"]} src={boloFloresta} alt="" />
+                    <img className={styles["fotosbolo"]} src={image} alt="" />
                 </div>
                 <div className={styles["details"]}>
                     <h3 className={styles["h3_cardCardapio"]}>{nome}</h3>

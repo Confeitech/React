@@ -14,6 +14,8 @@ const EncomendaCliente = () => {
     const navigate = useNavigate();
     const [precoTela, setPrecoTela] = useState(0);
     const [observacoes, setObservacoes] = useState("");
+    const [image, setimage] = useState();
+    let index = sessionStorage.getItem("index");
 
     // Recuperar valores de adicionais
     useEffect(() => {
@@ -55,7 +57,18 @@ const EncomendaCliente = () => {
         setPrecoTela(total + preco); // Atualiza o estado
     }, [contadores, preco]); // Adicione dependências relevantes
 
-
+    useEffect(() => {
+        api
+        .get("/cakes/imagem/" + index, { responseType: "blob" })  // Alterado para GET e responseType "blob"
+        .then((response) => {
+            const imageUrl = URL.createObjectURL(response.data);  // Cria uma URL a partir do Blob
+            setimage(imageUrl);  // Armazena a URL no estado
+            console.log(imageUrl);
+        })
+        .catch((error) => {
+            console.error("Erro ao buscar a imagem:", error);
+        });
+    }, [index]);
 
     // Função para incrementar o contador
     const incrementar = (id) => {
@@ -75,7 +88,6 @@ const EncomendaCliente = () => {
 
     const getBolo = () => {
 
-        let index = sessionStorage.getItem("index");
 
         api.get("/cakes/" + index)
             .then((response) => {
@@ -107,7 +119,7 @@ const EncomendaCliente = () => {
             <NavBarCliente />
             <div className={styles["container_pai"]}>
                 <div className={styles["container_foto"]}>
-                    <img className={styles["bolofoto"]} src={bolo} />
+                    <img className={styles["bolofoto"]} src={image} />
                 </div>
 
                 <div className={styles["container_elementos"]}>

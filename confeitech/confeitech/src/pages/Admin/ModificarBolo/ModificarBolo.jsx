@@ -33,10 +33,12 @@ const ModificarBolo = () => {
       .catch((error) => {
         console.log(error);
       });
-    
-      api.get("/cakes/imagem/" + id)
+
+    api
+      .get("/cakes/imagem/" + id, { responseType: "blob" })  // Define o tipo de resposta como "blob"
       .then((response) => {
-        setImagem(response);
+        const imageUrl = URL.createObjectURL(response.data);  // Cria uma URL a partir do Blob
+        setImagem(imageUrl);  // Armazena a URL no estado
       })
       .catch((error) => {
         console.log(error);
@@ -111,7 +113,9 @@ const ModificarBolo = () => {
         <div className={styles["editLeft"]}>
           <div className={styles["contentEditLeft"]}>
             <h3 className={styles["link"]}>Modificar imagem +</h3>
-            <div className={styles["editImage"]}>{}</div>
+            <div className={styles["editImage"]}>
+              {imagem ? <img src={imagem} alt="Imagem do bolo" className={styles["fotoBolo"]} /> : "Carregando..."}
+            </div>
           </div>
         </div>
         <div className={styles["editRight"]}>
