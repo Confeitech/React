@@ -100,16 +100,6 @@ const ModificarBolo = () => {
       });
   };
 
-  // const adcAdicionais = () => {
-  //   const novoAdicional = { nome: "", preco: 0 }; // Crie o adicional com propriedades vazias
-  //   setCardsData((prevData) => ({
-  //     ...prevData,
-  //     adicionais: [...prevData.adicionais, novoAdicional], // Adiciona o novo adicional ao array de adicionais
-  //   }));
-
-  //   console.log(cardsData);
-  // };
-
   useEffect(() => {
     getCakesData();
     checkIdNull();
@@ -121,7 +111,7 @@ const ModificarBolo = () => {
         <div className={styles["editLeft"]}>
           <div className={styles["contentEditLeft"]}>
             <h3 className={styles["link"]}>Modificar imagem +</h3>
-            <div className={styles["editImage"]}>{imagem}</div>
+            <div className={styles["editImage"]}>{}</div>
           </div>
         </div>
         <div className={styles["editRight"]}>

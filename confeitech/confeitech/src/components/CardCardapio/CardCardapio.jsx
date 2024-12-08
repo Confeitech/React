@@ -33,7 +33,7 @@ const CardCardapio = ({ index, nome, descricao, preco }) => {
         <div className={styles["imagem"]}>
           <img
             className={styles["imagemBolo"]}
-            src={image || imgBolo}
+            src={image}
             alt="Bolo de chocolate"
           />
         </div>
