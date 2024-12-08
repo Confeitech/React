@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./CardEncomendaAceita.module.css";
 import imgBolo from "../../utils/assets/fatia-de-bolo-de-chocolate-recheado-com-creme-marrom-e-morango-por-cima_993044-36.avif";
 import imgBolo2 from "../../utils/assets/bolo-com-dois-recheios-em-pedaço.jpg.webp";
@@ -6,10 +6,11 @@ import api from "../../api";
 import { ToastContainer, toast } from "react-toastify";
 
 const CardEncomendaAceita = (
-  { id, status, nomeBolo, nomeCliente, descricao, dataPedido, dataRetirada, preco, getAceita }
+  { id, indexBolo, status, nomeBolo, nomeCliente, descricao, dataPedido, dataRetirada, preco, peso, adicionais, getAceita }
 ) => {
   const [openModal, setOpenModal] = useState(false);
   const [indiceCor, setIndiceCor] = useState(1);
+  const [image, setimage] = useState();
   const colors = ["#5CE45C", "#B89300", "#000", "#FF0000"];
   let situação;
 
@@ -34,6 +35,20 @@ const CardEncomendaAceita = (
       });
     setOpenModal(false);
   };
+
+  useEffect(() => {
+    api
+      .get("/cakes/imagem/" + indexBolo, { responseType: "blob" })  // Alterado para GET e responseType "blob"
+      .then((response) => {
+        const imageUrl = URL.createObjectURL(response.data);  // Cria uma URL a partir do Blob
+        setimage(imageUrl);  // Armazena a URL no estado
+        console.log(imageUrl);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar a imagem:", error);
+      });
+
+  }, [indexBolo]);
 
   const Dialog = ({ isOpen }) => {
     if (isOpen) {
@@ -79,7 +94,7 @@ const CardEncomendaAceita = (
         <div className={styles["image"]}>
           <img
             className={styles["imagemBolo"]}
-            src={imgBolo}
+            src={image}
             alt="Bolo de chocolate"
           />
         </div>
@@ -91,6 +106,12 @@ const CardEncomendaAceita = (
             </h5>
             <h5 className={styles["h5_cardEncomenda"]}>
               Observações: {descricao || "Sem observações"}
+            </h5>
+            <h5 className={styles["h5_cardEncomenda"]}>
+              Peso: {peso || "1"}kg
+            </h5>
+            <h5 className={styles["h5_cardEncomenda"]}>
+              Adicionais: {adicionais || "Sem observações"}
             </h5>
             <h5 className={styles["h5_cardEncomenda"]}>
               Data do pedido: {dataPedido}

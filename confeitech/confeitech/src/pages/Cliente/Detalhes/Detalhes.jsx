@@ -15,6 +15,7 @@ const Detalhes = () => {
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [preco, setPreco] = useState(0);
   const [precoTela, setPrecoTela] = useState(0);
+  const [image, setImage] = useState();
 
   // Carregar os dados e inicializar os contadores
   const data = JSON.parse(sessionStorage.getItem("props"));
@@ -31,6 +32,20 @@ const Detalhes = () => {
         console.log(morangoDataUm);
       })
       .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    api
+      .get("/cakes/imagem/" + data.id, { responseType: "blob" })  // Alterado para GET e responseType "blob"
+      .then((response) => {
+        const imageUrl = URL.createObjectURL(response.data);  // Cria uma URL a partir do Blob
+        setImage(imageUrl);  // Armazena a URL no estado
+        console.log(imageUrl);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar a imagem:", error);
+      });
+
   }, []);
 
   const incrementar = () => {
@@ -103,7 +118,7 @@ const Detalhes = () => {
           </ul>
           <ul key={morangoDataUm.id} className={styles["listaDois"]}>
             <li>
-              <img className={styles["bolos"]} src={bolo} alt="Bolo" />
+              <img className={styles["bolos"]} src={image} alt="Bolo" />
             </li>
             <li className={styles["containerPreco"]}>
               <div className={styles["produtobolo"]}>{morangoDataUm.nome}</div>
