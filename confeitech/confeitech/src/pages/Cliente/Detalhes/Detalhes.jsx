@@ -149,7 +149,7 @@ const Detalhes = () => {
               <button className={styles["container_botaozinho"]} onClick={handleOpenModal}>
                 Encomendar
               </button>
-              <RetiradaModal isOpen={isModalOpen} onClose={handleCloseModal} preco={precoTela} adicional={data.adicionais} index={data.id} />
+              <RetiradaModal isOpen={isModalOpen} onClose={handleCloseModal} pesos={contadores} preco={precoTela} adicional={data.adicionais} index={data.id} />
             </div>
           </div>
           <p className={styles["gambiarra"]}>Local da Retirada: Rua Haddock Lobo</p>

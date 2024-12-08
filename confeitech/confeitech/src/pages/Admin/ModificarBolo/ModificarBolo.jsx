@@ -17,6 +17,7 @@ const ModificarBolo = () => {
   const [nomeBolo, setNomeBolo] = useState();
   const [precoBolo, setPrecoBolo] = useState();
   const [descricaoBolo, setDescricaoBolo] = useState();
+  const [imagem, setImagem] = useState();
 
   const getCakesData = () => {
     api
@@ -28,6 +29,14 @@ const ModificarBolo = () => {
         setNomeBolo(data.nome);
         setPrecoBolo(data.preco);
         setDescricaoBolo(data.descricao);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    
+      api.get("/cakes/imagem/" + id)
+      .then((response) => {
+        setImagem(response);
       })
       .catch((error) => {
         console.log(error);
@@ -112,7 +121,7 @@ const ModificarBolo = () => {
         <div className={styles["editLeft"]}>
           <div className={styles["contentEditLeft"]}>
             <h3 className={styles["link"]}>Modificar imagem +</h3>
-            <div className={styles["editImage"]}></div>
+            <div className={styles["editImage"]}>{imagem}</div>
           </div>
         </div>
         <div className={styles["editRight"]}>
@@ -149,20 +158,6 @@ const ModificarBolo = () => {
                 ></textarea>
                 <label htmlFor="precoBolo" className={styles["link"]}>Modificar Preço +</label>
               </div>
-              <div className={styles["buttonsEdit"]}>
-                <button className={styles["buttonPurple"]}>1,0kg</button>
-                <button className={styles["buttonPurple"]}>1,0kg</button>
-                <button className={styles["buttonPurple"]}>1,0kg</button>
-                <button className={styles["buttonWhite"]}>+</button>
-              </div>
-              {/* <div className={styles["tabelaEdit"]}>
-                {funcaoAdicionar()}
-              </div>
-              <div className={styles["buttonsSpace"]}>
-                <button className={styles["buttonAdd"]}
-                  onClick={() => adcAdicionais()}
-                >Adicionar+</button>
-              </div> */}
               <div className={styles["check"]}>
                 <div className={styles["fix"]}>
                   <div className={styles["colum"]} onClick={() => salvarEdicao()}>

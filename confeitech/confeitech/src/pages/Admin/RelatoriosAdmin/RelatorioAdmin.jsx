@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./RelatorioAdmin.module.css";
 import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import GraficoArea from "../../../components/GraficoArea/GraficoArea";
 import GraficoBarra from "../../../components/GraficoBarra/GraficoBarra";
+import api from "../../../api";
 
 const RelatorioAdmin = () => {
+    const [ cardsData, setCardsData ] = useState();
+
+    useEffect(() => {
+        api.get("/dashboard")
+            .then((response) => {
+                const { data } = response;
+                console.log(data);
+                setCardsData(data);
+                console.log(cardsData); 
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
     
 
     return (

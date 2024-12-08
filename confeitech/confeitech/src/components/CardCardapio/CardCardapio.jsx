@@ -1,15 +1,31 @@
 import React from "react";
 import styles from "./CardCardapio.module.css";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import imgBolo from "../../utils/assets/fatia-de-bolo-de-chocolate-recheado-com-creme-marrom-e-morango-por-cima_993044-36.avif";
+import api from "../../api";
 
 const CardCardapio = ({ index, nome, descricao, preco }) => {
-  const navigate = useNavigate(); 
+  const [image, setimage] = useState();
+  const navigate = useNavigate();
 
   const handleEditCakeClick = (index) => {
     sessionStorage.setItem("index", index);
-    navigate("/modificar-bolo"); 
+    navigate("/modificar-bolo");
   };
+
+  useEffect(() => {
+    api
+      .get("/cakes/imagem/" + index, { responseType: "blob" })  // Define o tipo de resposta como "blob"
+      .then((response) => {
+        const imageUrl = URL.createObjectURL(response.data);  // Cria uma URL a partir do Blob
+        setimage(imageUrl);  // Armazena a URL no estado
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [index]);  // Adicionando index como dependência para re-fetch se necessário
+
 
   return (
     <div className={styles["row"]}>
@@ -17,7 +33,7 @@ const CardCardapio = ({ index, nome, descricao, preco }) => {
         <div className={styles["imagem"]}>
           <img
             className={styles["imagemBolo"]}
-            src={imgBolo}
+            src={image || imgBolo}
             alt="Bolo de chocolate"
           />
         </div>
@@ -29,7 +45,7 @@ const CardCardapio = ({ index, nome, descricao, preco }) => {
           <h2>R$ {preco || "NA"}</h2>
           <button
             className={styles["buttonEdit"]}
-            onClick={() =>handleEditCakeClick(index)}
+            onClick={() => handleEditCakeClick(index)}
           >
             Modificar Bolo
           </button>

@@ -53,7 +53,7 @@ const CardEncomendaSolicitacao = ({ index, nomeBolo, nomeCliente, descricao, dat
                 <h3 className={styles["h3_info"]}>{nomeBolo}</h3>
                 <div className={styles["description"]}>
                     <h5 className={styles["h5_description"]}>Cliente: {nomeCliente}</h5>
-                    <h5 className={styles["h5_description"]}>Descrição: {descricao}</h5>
+                    <h5 className={styles["h5_description"]}>Descrição: {descricao|| "Sem observações"}</h5>
                     <h5 className={styles["h5_description"]}>Data do pedido: {dataPedido}</h5>
                     <h5 className={styles["h5_description"]} style={{ color: "red" }}>PREVISTO PARA RETIRADA: : {dataRetirada}</h5>
                 </div>

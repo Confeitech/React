@@ -5,7 +5,7 @@ import api from '../../../../api';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-const RetiradaModal = ({ isOpen, onClose, preco, adicional, index }) => {
+const RetiradaModal = ({ isOpen, onClose, pesos, preco, adicional, index }) => {
     const navigate = useNavigate();
     const [dia, setDia] = useState()
     const [mes, setMes] = useState()
@@ -15,18 +15,18 @@ const RetiradaModal = ({ isOpen, onClose, preco, adicional, index }) => {
         const info = JSON.parse(sessionStorage.getItem("props"));
 
         // Formatar a data no formato "YYYY-MM-DD"
-        const dataFormatada = `${ano}-${mes.padStart(2, '2')}-${dia.padStart(2, '0')}`;
+        const dataFormatada = `${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`;
 
         api
             .post("/encomendas", {
                 preco: preco,
                 observacoes: info.observacoes,
+                peso: pesos,
                 bolo: index,
                 adicionais: "string",
                 dataRetirada: dataFormatada,
-                user: 3
+                user: 1
             })
-
             .then(() => {
                 console.log("Adicionado");
                 onClose();
@@ -35,23 +35,7 @@ const RetiradaModal = ({ isOpen, onClose, preco, adicional, index }) => {
                 navigate("/minhasEncomendas");
             })
             .catch((error) => {
-                console.log({
-                    preco: preco,
-                    observacoes: info.observacoes,
-                    bolo: index,
-                    adicionais: "string",
-                    dataRetirada: dataFormatada,
-                    user: 3
-                });
                 console.log(error);
-                console.log({
-                    preco: preco,
-                    observacoes: info.observacoes,
-                    bolo: index,
-                    adicionais: "string",
-                    dataRetirada: dataFormatada,
-                    user: 3
-                })
                 toast.error("Erro ao realizar encomenda!");
             });
     }
@@ -61,6 +45,7 @@ const RetiradaModal = ({ isOpen, onClose, preco, adicional, index }) => {
         console.log("Preco: ", preco);
         console.log("Adicional: ", adicional);
         console.log("Index: ", index);
+        console.log("Peso: ", pesos);
     }, [isOpen]);
 
 

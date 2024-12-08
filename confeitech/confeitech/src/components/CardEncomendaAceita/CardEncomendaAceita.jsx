@@ -90,7 +90,7 @@ const CardEncomendaAceita = (
               Cliente: {nomeCliente}
             </h5>
             <h5 className={styles["h5_cardEncomenda"]}>
-              {descricao}
+              Observações: {descricao || "Sem observações"}
             </h5>
             <h5 className={styles["h5_cardEncomenda"]}>
               Data do pedido: {dataPedido}

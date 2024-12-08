@@ -6,6 +6,7 @@ import cancel from "../../../utils/assets/cancelar.png";
 import imagemLink from "../../../utils/assets/link.png";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import api from "../../../api";
 
 const NovoBolo = () => {
     const [number, setNumber] = useState(0);
@@ -14,48 +15,90 @@ const NovoBolo = () => {
     const [descricaoBolo, setDescricaoBolo] = useState("");
     const [precoBolo, setPrecoBolo] = useState(0);
     const navigate = useNavigate();
-
+    let idBoloImage;
     const Voltar = () => {
         navigate("/cardapio");
     }
 
-    const criarBolo = () => {
+    const criarBolo = async () => {
+        console.log(selectedFile);
 
-        if(nomeBolo === "" || descricaoBolo === "" || precoBolo === 0){
+        if (
+            nomeBolo === "" ||
+            descricaoBolo === "" ||
+            precoBolo === 0 ||
+            !selectedFile
+        ) {
             toast.error("Preencha todos os campos!");
-        }else{
-
+            return;
         }
-    }
 
-    const enviarFoto = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-    
         try {
-            const response = await fetch("http://localhost:8080/cakes/imagem/2", {
-                method: "PATCH",
-                body: formData,
+            // 1. Criar o bolo e obter o ID
+            const boloResponse = await api.post("/cakes", {
+                nome: nomeBolo,
+                preco: precoBolo,
+                descricao: descricaoBolo,
+                adicionais: [],
             });
-    
-            if (response.ok) {
-                // Sucesso
+
+            const idBoloImage = boloResponse.data.id;
+            console.log("Bolo criado com ID:", idBoloImage);
+
+            // 2. Enviar a imagem para o backend
+            const formData = new FormData();
+            formData.append("novaFoto", selectedFile);
+
+            const imagemResponse = await fetch(
+                `http://localhost:8080/cakes/imagem/${idBoloImage}`,
+                {
+                    method: "PATCH",
+                    body: formData,
+                }
+            );
+
+            if (imagemResponse.ok) {
                 toast.success("Imagem enviada com sucesso!");
                 console.log("Imagem enviada com sucesso!");
+                navigate("/cardapio"); // Redireciona após sucesso
             } else {
-                // Caso a resposta não seja OK, mostra erro
-                const errorText = await response.text();
-                toast.error(`Erro ao enviar imagem: ${errorText || 'Erro desconhecido'}`);
-                console.error(`Erro ao enviar imagem: ${errorText || 'Erro desconhecido'}`);
+                const errorText = await imagemResponse.text();
+                toast.error(`Erro ao enviar imagem: ${errorText || "Erro desconhecido"}`);
+                console.error(`Erro ao enviar imagem: ${errorText || "Erro desconhecido"}`);
             }
         } catch (error) {
-            // Erro de rede ou falha no fetch
-            toast.error("Erro ao enviar imagem.");
-            console.error("Erro ao enviar imagem", error);
+            console.error("Erro ao criar o bolo ou enviar a imagem:", error);
+            toast.error("Erro ao criar o bolo ou enviar a imagem!");
         }
     };
-    
+
+
+    const enviarFoto = async (e) => {
+        // e.preventDefault();
+        // const formData = new FormData();
+
+        // formData.append("novaFoto", selectedFile); // Certifique-se de que o nome do campo é 'novaFoto' conforme a definição do backend
+
+        // try {
+        //     const response = await fetch("http://localhost:8080/cakes/imagem/2", {
+        //         method: "PATCH",
+        //         body: formData,
+        //     });
+
+        //     if (response.ok) {
+        //         toast.success("Imagem enviada com sucesso!");
+        //         console.log("Imagem enviada com sucesso!");
+
+        //     } else {
+        //         const errorText = await response.text();
+        //         toast.error(`Erro ao enviar imagem`);
+        //         console.error(`Erro ao enviar imagem: ${errorText || 'Erro desconhecido'}`);
+        //     }
+        // } catch (error) {
+        //     toast.error("Erro ao enviar imagem.");
+        //     console.error("Erro ao enviar imagem", error);
+        // }
+    };
 
     return (
         <div className={styles["body"]}>
@@ -81,12 +124,12 @@ const NovoBolo = () => {
                         <div className={styles["buttonsSpace"]}>
                             <div className={styles["correct"]}>
                                 <div type="file" className={styles["addImage"]}>
-                                    Adicionar imagem 
+                                    Adicionar imagem
                                 </div>
-                                <form action="" onSubmit={enviarFoto}>
-                                    <input type="file" accept="image/jpeg" />
-                                    <button type="submit" > Enviar    </button>
-                                </form>
+                                {/* <form action="" onSubmit={enviarFoto}> */}
+                                <input type="file" accept="image/jpeg" onChange={(e) => setSelectedFile(e.target.files[0])} />
+                                {/* <button type="submit" > Enviar    </button> */}
+                                {/* </form> */}
                             </div>
                         </div>
                         <div className={styles["check"]}>
