@@ -3,18 +3,22 @@ import api from "../../../api";
 import styles from "./MinhasEncomendas.module.css";
 import NavBarCliente from "../../../components/NavBarCliente/NavBarCliente";
 import coroa from "../../../utils/Detalhes/coroa.png";
-import bolo from "../../../utils/Detalhes/Bolo-Sensacao-01.webp";
+
 import CancelarPedidoModal from "../../Cliente/MinhasEncomendasC/CancelarPedido/CancelarPedidoModal";
 
-const MinhasEncomendas = () => {
+const MinhasEncomendas = ({index} ) => {
+  const [image, setimage] = React.useState();
+  sessionStorage.setItem("index",index)
   const [cardsData, setCardsData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPedidoId, setSelectedPedidoId] = useState(null); // Estado para armazenar o ID do pedido selecionado
 
   // Função para buscar os dados da API
   const recuperarValorDoCardum = () => {
+   
+    
     api
-      .get("/carrinhos")
+      .get("/encomendas")
       .then((response) => {
         const { data } = response;
         setCardsData(data);
@@ -25,8 +29,18 @@ const MinhasEncomendas = () => {
   };
 
   useEffect(() => {
+    api
+    .get("/cakes/imagem/" + index, { responseType: "blob" })  // Alterado para GET e responseType "blob"
+    .then((response) => {
+        const imageUrl = URL.createObjectURL(response.data);  // Cria uma URL a partir do Blob
+        setimage(imageUrl);  // Armazena a URL no estado
+        console.log(imageUrl);
+    })
+    .catch((error) => {
+        console.error("Erro ao buscar a imagem:", error);
+    });
     recuperarValorDoCardum();
-  }, []);
+  }, [index]);
 
   // Abre o modal e define o ID do pedido selecionado
   const handleOpenModal = (pedidoId) => {
@@ -57,7 +71,7 @@ const MinhasEncomendas = () => {
               <div className={styles["encomendasPai"]} key={data.id}>
                 <img
                   className={styles["bolofoto"]}
-                  src={bolo}
+                  src={image}
                   alt={`Bolo ${data.nome}`}
                 />
                 <div className={styles["information"]}>
@@ -69,11 +83,9 @@ const MinhasEncomendas = () => {
                     Data de Retirada: {data.dataRetirada}
                   </p>
                   <p className={styles["pretin"]}>
-                    Status de Encomenda: {data.status || "Pendente"}
+                    Status de Encomenda: {data.andamento}
                   </p>
-                  <p className={styles["pretin"]}>
-                    Local de Retirada: {data.localRetirada || "Não informado"}
-                  </p>
+              
                 </div>
                 <div className={styles["name"]}>
                   <p className={styles["total"]}>
