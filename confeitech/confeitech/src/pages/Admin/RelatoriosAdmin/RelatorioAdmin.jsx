@@ -5,6 +5,7 @@ import GraficoArea from "../../../components/GraficoArea/GraficoArea";
 import GraficoBarra from "../../../components/GraficoBarra/GraficoBarra";
 import api from "../../../api";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const RelatorioAdmin = () => {
     const [cardsData, setCardsData] = useState();
@@ -14,8 +15,33 @@ const RelatorioAdmin = () => {
     const [grafico2, setGrafico2] = useState();
     const [hoje, setHoje] = useState(0);
     const today = new Date();
-    
+
     const Navigate = useNavigate();
+
+    const gerarCsv = () => {
+        api.get("/csv", { responseType: "blob" }) // Solicita o arquivo como um blob
+            .then((response) => {
+                // Cria uma URL para o blob retornado
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                // Cria um elemento de link
+                const link = document.createElement("a");
+                link.href = url;
+                // Define o nome do arquivo para o download
+                link.setAttribute("download", "relatorio.csv");
+                // Adiciona o link ao DOM temporariamente e clica nele
+                document.body.appendChild(link);
+                link.click();
+                // Remove o link do DOM
+                link.parentNode.removeChild(link);
+                // Exibe o toast de sucesso
+                toast.success("Relatório gerado com sucesso");
+            })
+            .catch(() => {
+                // Exibe o toast de erro
+                toast.error("Erro ao gerar o relatório");
+            });
+    };
+
 
     useEffect(() => {
         api.get("/dashboard")
@@ -50,7 +76,7 @@ const RelatorioAdmin = () => {
             });
     }, []);
 
-    const Change = () => {Navigate("/encomendas")}
+    const Change = () => { Navigate("/encomendas") }
 
     return (
         <div className={styles["body"]}>
@@ -75,7 +101,7 @@ const RelatorioAdmin = () => {
                         <div className={styles["cardRelatorio"]}>
                             <div className={styles["block"]}>
                                 <h2 className={styles["h2Baixar"]}>Resumo do mês</h2>
-                                <button className={styles["buttonBaixar"]}>Baixar</button>
+                                <button className={styles["buttonBaixar"]} onClick={() => gerarCsv()}>Baixar</button>
                             </div>
                         </div>
                     </div>
@@ -107,7 +133,7 @@ const RelatorioAdmin = () => {
                         </div>
                         <div className={styles["grafico"]}>
                             <h2>Bolo mais vendido da semana</h2>
-                            <GraficoBarra data={cardsData?.graficoVendidoSemana || []}/>
+                            <GraficoBarra data={cardsData?.graficoVendidoSemana || []} />
                         </div>
                     </div>
                 </div>

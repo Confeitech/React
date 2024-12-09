@@ -121,7 +121,7 @@ const EncomendaCliente = () => {
                 <div className={styles["container_foto"]}>
                     <img className={styles["bolofoto"]} src={image} />
                 </div>
-
+                <div className= {styles["pailegal"]}>
                 <div className={styles["container_elementos"]}>
                     <h1 className={styles["container_titulo"]}>
                         {
@@ -148,13 +148,7 @@ const EncomendaCliente = () => {
                         <p className={styles["paragrafoTamanho"]}>Tamanho:1,0Kg</p>
                         <button onClick={goToCardapioDois} className={styles["container_botao"]}>Encomendar</button>
                     </div>
-                    {/* <div className={styles["container_lista"]}>
-                        <button className={styles["container_kilos"]}>1.5Kg</button>
-                        <button className={styles["container_kilos"]}>2.0Kg</button>
-                        <button className={styles["container_kilos"]}>1.0Kg</button>
-                        <button className={styles["container_kilos"]}>2.5Kg</button>
-                    </div> */}
-
+            
                     <h3 className={styles["naosei"]}>Adicionais</h3>
                     <div className={styles["container_paiAdicionar"]}>
                         {morangoData && morangoData.map((data) => (
@@ -198,6 +192,7 @@ const EncomendaCliente = () => {
                         <p className={styles["container_gamb"]}>Lembrete: Pagamento na retirada</p>
                         <button onClick={goToCardapioDois} className={styles["container_botaodois"]}>Encomendar</button>
                     </div>
+                </div>
                 </div>
             </div>
         </>

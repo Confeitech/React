@@ -11,9 +11,9 @@ import api from "../../../api";
 const NovoBolo = () => {
     const [number, setNumber] = useState(0);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [nomeBolo, setNomeBolo] = useState("");
-    const [descricaoBolo, setDescricaoBolo] = useState("");
-    const [precoBolo, setPrecoBolo] = useState(0);
+    const [nomeBolo, setNomeBolo] = useState("Bolo de cenoura");
+    const [descricaoBolo, setDescricaoBolo] = useState("Contem glutem e lactose");
+    const [precoBolo, setPrecoBolo] = useState(20);
     const navigate = useNavigate();
     let idBoloImage;
     const Voltar = () => {
@@ -107,18 +107,18 @@ const NovoBolo = () => {
                 <div className={styles["boxNew"]}>
                     <div className={styles["contentCake"]}>
                         <div className={styles["titleCake"]}>
-                            <textarea className={styles["text"]} id="nomeBolo" placeholder="Nome Bolo" onChange={(e) => setNomeBolo(e.target.value)}></textarea>
+                            <textarea className={styles["text"]} id="nomeBolo" placeholder="Nome Bolo" value={nomeBolo} onChange={(e) => setNomeBolo(e.target.value)}></textarea>
                             <label className={styles["link"]} htmlFor="nomeBolo">Adicionar Nome +</label>
                         </div>
                         <div className={styles["midCake"]}>
-                            <textarea id="descricaoBolo" placeholder="Descrição Bolo" type="text" className={styles["inputCake"]} onChange={(e) => setDescricaoBolo(e.target.value)} />
+                            <textarea id="descricaoBolo" placeholder="Descrição Bolo" type="text" className={styles["inputCake"]} value={descricaoBolo} onChange={(e) => setDescricaoBolo(e.target.value)} />
                             <label htmlFor="descricaoBolo" className={styles["link"]}>Adicionar Descrição +</label>
                         </div>
                         <div className={styles["titleCake"]}>
                             <div className={styles["precinho"]}>
                                 R$:
                             </div>
-                            <textarea id="precoBolo" className={styles["text"]} placeholder="Preço Padrão: 1kg" onChange={(e) => setPrecoBolo(e.target.value)}></textarea>
+                            <textarea id="precoBolo" className={styles["text"]} placeholder="Preço Padrão: 1kg" value={precoBolo} onChange={(e) => setPrecoBolo(e.target.value)}></textarea>
                             <label htmlFor="precoBolo" className={styles["link"]}>Adicionar Preço +</label>
                         </div>
                         <div className={styles["buttonsSpace"]}>
@@ -126,10 +126,7 @@ const NovoBolo = () => {
                                 <div type="file" className={styles["addImage"]}>
                                     Adicionar imagem
                                 </div>
-                                {/* <form action="" onSubmit={enviarFoto}> */}
                                 <input type="file" accept="image/jpeg" onChange={(e) => setSelectedFile(e.target.files[0])} />
-                                {/* <button type="submit" > Enviar    </button> */}
-                                {/* </form> */}
                             </div>
                         </div>
                         <div className={styles["check"]}>
