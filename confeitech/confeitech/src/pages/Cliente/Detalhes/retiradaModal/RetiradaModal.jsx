@@ -23,7 +23,7 @@ const RetiradaModal = ({ isOpen, onClose, pesos, preco, adicional, index }) => {
                 observacoes: info.observacoes,
                 peso: pesos,
                 bolo: index,
-                adicionais: "string",
+                adicionais: "STRING",
                 dataRetirada: dataFormatada,
                 user: 1
             })
@@ -35,6 +35,15 @@ const RetiradaModal = ({ isOpen, onClose, pesos, preco, adicional, index }) => {
                 navigate("/minhasEncomendas");
             })
             .catch((error) => {
+                console.log(dataFormatada)
+                console.log(
+                    preco,
+                  info.observacoes,
+                     pesos,
+                    index,
+                   
+                     dataFormatada,
+                                    )
                 console.log(error);
                 toast.error("Erro ao realizar encomenda!");
             });
