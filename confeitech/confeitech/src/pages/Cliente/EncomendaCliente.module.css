@@ -6,8 +6,6 @@
 
 .container_pai {
     display: flex;
-
-
 }
 
 .container_elementos {
@@ -15,14 +13,23 @@
     flex-direction: column;
     margin-left: 4vw;
     margin-top: 0vw;
+    height: 29vw;
 
+}
+.pailegal{
+    background-color: white;
+    margin: 2vw;
+    border-radius: 2vw;
+    box-shadow: black 0px 0px 10px;
+    height: 31vw;
+    
 }
 
 .container_paragrafo {
     display: flex;
     align-items: center;
     height: 14%;
-
+    font-size: 2vw;
 
 }
 
@@ -34,11 +41,13 @@
     height: 2vw;
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-left: -3vw;
 }
 
 .dinheiro {
-    font-size: 1.3vw;
-    color: rgba(27, 85, 25, 1);
+    font-size: 2vw;
+    color: rgb(38, 119, 36);
 }
 
 .container_encomenda {
@@ -62,7 +71,7 @@
 .container_lista {
     display: flex;
     justify-content: space-evenly;
-    width: 30vw;
+    width: 15vw;
 }
 
 li {
@@ -81,7 +90,7 @@ li {
 
 .container_paiAdicionar {
     display: flex;
-    height: 17vw;
+    height: 13vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,12 +99,13 @@ li {
     margin-top: -1vw;
     overflow-y: scroll;
     overflow-x: hidden;
+    
 
 }
 
 .container_filhoAdicionar {
     background-color: white;
-    width: 30vw;
+    width: 28vw;
     height: 3vw;
     display: flex;
     justify-content: space-around;
@@ -103,7 +113,8 @@ li {
     margin-top: 1.4vw;
     display: flex;
     align-items: center;
-
+    border-radius: 3vw;
+    border: 1.5px solid black
 }
 
 .container_botaoPaiAdicionar {
@@ -183,6 +194,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 3vw;
 }
 
 .container_botaodois {
@@ -193,7 +205,8 @@ li {
     width: 8vw;
     color: white;
     font-size: 1vw;
-
+    margin-top:1vw;
+  
 }
 
 .container_retirada {
@@ -204,6 +217,8 @@ li {
 
 .container_gamb {
     margin-left: -8vw;
+    display: flex;
+    align-items: center;
 }
 
 .num {
