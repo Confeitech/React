@@ -51,16 +51,6 @@ const ModificarBolo = () => {
     }
   };
 
-  // const funcaoAdicionar = () => {
-  //   if (cardsData?.adicionais) {
-  //     if (Array.isArray(cardsData?.adicionais)) {
-  //       return cardsData?.adicionais.map((data, index) => (
-  //         <Adicionais key={index} index={index} adicionais={data} />
-  //       ));
-  //     }
-  //   }
-  // };
-
   const salvarEdicao = () => {
     if (nomeBolo === undefined || descricaoBolo === undefined || precoBolo === undefined) {
       toast.error("Preencha todos os campos!");
@@ -112,7 +102,7 @@ const ModificarBolo = () => {
       <div className={styles["editCake"]}>
         <div className={styles["editLeft"]}>
           <div className={styles["contentEditLeft"]}>
-            <h3 className={styles["link"]}>Modificar imagem +</h3>
+            <h3 className={styles["link"]}></h3>
             <div className={styles["editImage"]}>
               {imagem ? <img src={imagem} alt="Imagem do bolo" className={styles["fotoBolo"]} /> : "Carregando..."}
             </div>

@@ -71,7 +71,7 @@
     align-items: center;
     width: 40%;
     height: 100%;
-    background: linear-gradient(to bottom, #800013, #c55757);
+    background: linear-gradient(to bottom, #bd2e2e, #c55757);
     color: #fff;
     border-radius: 10px;
     border-color: #ffffff;
@@ -79,5 +79,5 @@
 }
 
 .buttonEdit:hover {
-    background: linear-gradient(to bottom, #c55757, #800013);
+    background: linear-gradient(to bottom, #c55757, #bd2e2e);
 }

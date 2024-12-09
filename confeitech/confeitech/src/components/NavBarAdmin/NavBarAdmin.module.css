@@ -30,7 +30,7 @@
 .logo,
 .frase {
     display: flex;
-    color: #770000;
+    color: #702f26;
     height: 15%;
     width: 100%;
     justify-content: center;
@@ -61,9 +61,10 @@
     width: 30%;
     height: 100%;
     background-color: null;
-    font-size: 105%;
+    font-size: 110%;
+    font-weight: bold;
     cursor: pointer;
-    color: #000;
+    color: #702f26;
 }
 
 .active {
@@ -73,10 +74,10 @@
     width: 30%;
     height: 100%;
     background-color: null;
-    font-size: 105%;
+    font-size: 110%;
     cursor: pointer;
-    text-decoration: none;
-    color: #000;
+    font-weight: bold;
+    color: #702f26;
     text-decoration: underline;
     text-decoration-color: #FFCC00;
 }

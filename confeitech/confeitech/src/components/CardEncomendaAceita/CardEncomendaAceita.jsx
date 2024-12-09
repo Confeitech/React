@@ -99,26 +99,26 @@ const CardEncomendaAceita = (
           />
         </div>
         <div className={styles["info"]}>
-          <h3 className={styles["h3_cardEncomenda"]}>{nomeBolo}</h3>
+          <h2 className={styles["h3_cardEncomenda"]}>{nomeBolo}</h2>
           <div className={styles["description"]}>
-            <h5 className={styles["h5_cardEncomenda"]}>
+            <h4 className={styles["h5_cardEncomenda"]}>
               Cliente: {nomeCliente}
-            </h5>
-            <h5 className={styles["h5_cardEncomenda"]}>
+            </h4>
+            <h4 className={styles["h5_cardEncomenda"]}>
               Observações: {descricao || "Sem observações"}
-            </h5>
-            <h5 className={styles["h5_cardEncomenda"]}>
+            </h4>
+            <h4 className={styles["h5_cardEncomenda"]}>
               Peso: {peso || "1"}kg
-            </h5>
-            <h5 className={styles["h5_cardEncomenda"]}>
+            </h4>
+            <h4 className={styles["h5_cardEncomenda"]}>
               Adicionais: {adicionais || "Sem observações"}
-            </h5>
-            <h5 className={styles["h5_cardEncomenda"]}>
+            </h4>
+            <h4 className={styles["h5_cardEncomenda"]}>
               Data do pedido: {dataPedido}
-            </h5>
-            <h5 className={styles["h5_cardEncomendaRed"]}>
+            </h4>
+            <h4 className={styles["h5_cardEncomendaRed"]}>
               PREVISTO PARA RETIRADA: : {dataRetirada}
-            </h5>
+            </h4>
           </div>
         </div>
         <div className={styles["edit"]}>
