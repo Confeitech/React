@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #ff4747;
+    background-color: #bd2e2e;
+    color: #fff;
 }
 
 .cardapio {
@@ -81,7 +82,7 @@
 .text .h1_cardapio {
     display: flex;
     height: 30%;
-    color: black;
+    color: white
 }
 
 .table {
