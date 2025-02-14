@@ -7,7 +7,6 @@ import pesquisa from "../../../utils/Detalhes/pesquisa.png"
 import CardCliente from "../../../components/CardCardapioCliente/CardCardapioCliente"
 
 
-
 const CardapioCliente = () => {
 
 

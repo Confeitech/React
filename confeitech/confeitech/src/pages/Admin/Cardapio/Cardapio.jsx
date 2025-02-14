@@ -4,7 +4,7 @@ import styles from "./Cardapio.module.css";
 import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import CardCardapio from "../../../components/CardCardapio/CardCardapio";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Cardapio = () => {
   const navigate = useNavigate(); // Hook do React Router para navegação
