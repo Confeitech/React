@@ -1,10 +1,10 @@
-import React, { useState, useEffect, act } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Ingredientes.module.css";
 import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import excluir from "../../../utils/assets/excluir.png";
 import editar from "../../../utils/assets/editar.png";
 import api from "../../../api";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Ingredientes = () => {
   const estiloTabela = {
@@ -187,8 +187,8 @@ const Ingredientes = () => {
         <div className={styles["modal-overlay"]}>
           <div className={styles["modal"]}>
             <h2>Editar ingrediente</h2>
-            <input type="text" placeholder="Nome" onChange={(e) => handleInputChange(e, setNome)} />
-            <input type="text" placeholder="Valor" onChange={(e) => handleInputChange(e, setPreco)} />
+            <input type="text" placeholder="Nome" className={styles["inputModal"]} onChange={(e) => handleInputChange(e, setNome)} />
+            <input type="text" placeholder="Valor" className={styles["inputModal"]} onChange={(e) => handleInputChange(e, setPreco)} />
             <span className={styles["fixButtons"]}>
               <button className={styles["buttonS"]} onClick={salvarAdicional}>Salvar</button>
               <button className={styles["buttonN"]} onClick={closeModalEdit}>Cancelar</button>
@@ -201,8 +201,8 @@ const Ingredientes = () => {
         <div className={styles["modal-overlay"]}>
           <div className={styles["modal"]}>
             <h2>Adicionar ingrediente</h2>
-            <input type="text" placeholder="Nome" onChange={(e) => handleInputChange(e, setNome)} />
-            <input type="text" placeholder="Valor" onChange={(e) => handleInputChange(e, setPreco)} />
+            <input type="text" placeholder="Nome" className={styles["inputModal"]} onChange={(e) => handleInputChange(e, setNome)} />
+            <input type="text" placeholder="Valor" className={styles["inputModal"]} onChange={(e) => handleInputChange(e, setPreco)} />
             <span className={styles["fixButtons"]}>
               <button className={styles["buttonS"]} onClick={addAdicional}>Adicionar</button>
               <button className={styles["buttonN"]} onClick={closeModalAdd}>Cancelar</button>

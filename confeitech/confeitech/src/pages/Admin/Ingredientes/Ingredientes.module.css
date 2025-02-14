@@ -92,8 +92,8 @@
     display: flex;
     background: white;
     border-radius: 5px;
-    width: 300px;
-    height: 200px;
+    width: 400px;
+    height: 300px;
     flex-direction: column;
     text-align: center;
     justify-content: space-evenly;
@@ -105,6 +105,14 @@
     justify-content: space-evenly;
     height: 15%;
     width: 80%;
+}
+
+.inputModal{
+    width: 50%;
+    height: 10%;
+    border-radius: 6px;
+    border: 1px solid #000;
+    text-align: center;
 }
 
 .buttonS {

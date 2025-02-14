@@ -52,9 +52,8 @@
 
 .editImage {
     display: flex;
-    width: 400px;
-    height: 400px;
-    background-color: black;
+    width: 700px;
+    height: 500px;    
 }
 
 .boxEditRight {
@@ -301,12 +300,26 @@
     font-family: 'Times New Roman', Times, serif;
     width: 45%;
     height: 80%;
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+.text1 {
+    display: flex;
+    border: none;
+    font-size: 1.19em;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    width: 60%;
+    height: 80%;
+    border: 2px solid black;
+    border-radius: 6px;
 }
 
 .inputEdit {
     display: block;
-    border: 1px solid black;
-    border-radius: 10px;
+    border: 2px solid black;
+    border-radius: 6px;
     width: 60%;
     height: 70%;
     font-size: 1.19em;
@@ -328,4 +341,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: none;
 }
