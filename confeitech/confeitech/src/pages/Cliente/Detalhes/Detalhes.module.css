@@ -84,6 +84,12 @@ li{
     background-color: #911212;
     color: white;
     border-radius: 0.5vw;
+    font-family: "Rubik", sans-serif ;
+    font-weight: 700;
+}
+.container_botaozinho:hover {
+    background-color: white;
+    color: black;
 }
 .gambiarra{
     margin-top:-1vw;
@@ -152,7 +158,7 @@ width: 10vw;
 }
 .bolos{
     width: 6vw;
-    margin-left: -6vw;
+    border-radius: 20%;
 }
 .gambiarraTres{
     margin-left: 3vw;

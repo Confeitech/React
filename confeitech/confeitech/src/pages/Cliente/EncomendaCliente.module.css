@@ -1,11 +1,16 @@
 
-
-.container_foto {
-    
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400&display=swap');
+*{
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .container_pai {
     display: flex;
+    justify-content: space-evenly;
+    padding: 2vw;
+    
+    
 }
 
 .container_elementos {
@@ -17,11 +22,11 @@
 
 }
 .pailegal{
-    background-color: white;
+    background-color: #f5eadd;
     margin: 2vw;
     border-radius: 2vw;
     box-shadow: black 0px 0px 10px;
-    height: 31vw;
+    height: 36vw;
     
 }
 
@@ -29,8 +34,9 @@
     display: flex;
     align-items: center;
     height: 14%;
-    font-size: 2vw;
-
+    font-size: 1.5vw;
+    font-family: "Nunito Sans", sans-serif ;
+    color: #5b3a30;
 }
 
 .container_titulo {
@@ -43,6 +49,9 @@
     align-items: center;
     justify-content: center;
     margin-left: -3vw;
+    font-weight: 700;
+    font-family: 'Nunito Sans', sans-serif;
+     color: #5b3a30;
 }
 
 .dinheiro {
@@ -208,17 +217,23 @@ li {
     margin-top:1vw;
   
 }
+.container_botaodois:hover {
+    background-color: white;
+    color: black;
+}
 
 .container_retirada {
     display: flex;
     justify-content: space-around;
     width: 45vw;
+    height: 0vw;
 }
 
 .container_gamb {
     margin-left: -8vw;
     display: flex;
     align-items: center;
+    height: 5vw;
 }
 
 .num {

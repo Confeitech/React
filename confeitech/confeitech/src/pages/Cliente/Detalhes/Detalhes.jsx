@@ -95,6 +95,7 @@ const Detalhes = () => {
     if (selectedItemId) {
       setMorangoDataUm((prev) => prev.filter((item) => item.id !== selectedItemId));
       console.log(`Pedido com ID ${selectedItemId} cancelado`);
+      
     }
     setIsCancelModalOpen(false);
     setSelectedItemId(null);

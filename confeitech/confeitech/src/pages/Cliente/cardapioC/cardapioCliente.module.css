@@ -29,7 +29,10 @@ html {
     width: 100%;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: black;
+    margin-left: 3vw;
+    font-family: "Rubik", sans-serif ;
+    font-size: 0.8vw;
 }
 
 .span_cardapio {

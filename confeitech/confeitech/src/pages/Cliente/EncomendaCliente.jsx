@@ -16,6 +16,7 @@ const EncomendaCliente = () => {
     const [observacoes, setObservacoes] = useState("");
     const [image, setimage] = useState();
     let index = sessionStorage.getItem("index");
+    
 
     // Recuperar valores de adicionais
     useEffect(() => {
