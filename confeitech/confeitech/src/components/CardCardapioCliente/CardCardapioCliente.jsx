@@ -1,9 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect } from "react";
 import styles from "./CardCardapioCliente.module.css";
-import bolo from "../../utils/Detalhes/Bolo-Sensacao-01.webp"
-import boloMorango from "../../utils/Detalhes/bolo-de-morango-aniversario.jpg"
-import boloFloresta from "../../utils/Detalhes/floresta-negra-cod-374.jpg"
-import boloChocolate from "../../utils/Detalhes/boloChocolate.jpg"
 import { useNavigate } from "react-router-dom";
 import api from "../../api";
 

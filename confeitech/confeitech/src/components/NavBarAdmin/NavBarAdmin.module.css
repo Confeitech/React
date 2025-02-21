@@ -84,6 +84,6 @@
 
 .a_options:hover,
 .active:hover {
-    background-color: #888;
+    background-color: #cacaca;
     transition: 0.5s;
 }

@@ -4,10 +4,8 @@ import NavBarAdmin from "../../../components/NavBarAdmin/NavBarAdmin";
 import check from "../../../utils/assets/verifica.png";
 import cancel from "../../../utils/assets/cancelar.png";
 import api from "../../../api";
-import Adicionais from "../../../components/rowTabelaAdicionais/Adicionais";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { use } from "react";
 
 const ModificarBolo = () => {
   let id = sessionStorage.getItem("index");
@@ -114,7 +112,7 @@ const ModificarBolo = () => {
               <div className={styles["titleEdit"]}>
                 <textarea
                   id="nomeBolo"
-                  className={styles["text"]}
+                  className={styles["text1"]}
                   value={nomeBolo}
                   onChange={(e) => setNomeBolo(e.target.value)}
                 ></textarea>

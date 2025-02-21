@@ -2,7 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400&display=swap');
 *{
-    font-family: "Nunito Sans", sans-serif;
+    font-family: "Nunito Sans", sans-serif ;
+}
+.container_foto {
 }
 
 .container_pai {
@@ -16,10 +18,11 @@
 .container_elementos {
     display: flex;
     flex-direction: column;
-    margin-left: 4vw;
+    margin-left: 2vw;
     margin-top: 0vw;
     height: 29vw;
-
+    background-color: #f5eadd;
+    border-radius: 15px;
 }
 .pailegal{
     background-color: #f5eadd;
@@ -40,9 +43,6 @@
 }
 
 .container_titulo {
-    font-family: "Pacifico", cursive;
-    font-weight: 400;
-    font-style: normal;
     margin-top: 1vw;
     height: 2vw;
     display: flex;
@@ -68,7 +68,7 @@
 
 .container_botao {
     margin-left: -5vw;
-    background-color: #C51B1D;
+    background-color: #5b3a30;
     font-weight: 900;
     border-radius: 0.5vw;
     height: 2vw;
@@ -76,6 +76,7 @@
     color: white;
     font-size: 1vw;
 }
+
 
 .container_lista {
     display: flex;
@@ -136,6 +137,7 @@ li {
     height: 15vw;
 
 }
+
 
 /* .Morango2{
     margin-top:-0.5vw;
@@ -207,7 +209,7 @@ li {
 }
 
 .container_botaodois {
-    background-color: #C51B1D;
+    background-color: #5b3a30;
     font-weight: 900;
     border-radius: 1vw;
     height: 3vw;
@@ -216,6 +218,10 @@ li {
     font-size: 1vw;
     margin-top:1vw;
   
+}
+.container_botaodois:hover {
+    background-color: white;
+    color: black;
 }
 .container_botaodois:hover {
     background-color: white;
@@ -254,4 +260,5 @@ li {
     height: 30vw;
     margin-top: 2vw;
     margin-left: 2vw;
+    border-radius: 15px;
 }
