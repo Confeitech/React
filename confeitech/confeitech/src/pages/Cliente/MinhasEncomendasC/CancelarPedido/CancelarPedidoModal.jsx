@@ -15,7 +15,13 @@ const CancelarPedidoModal = ({ isOpen, onClose, pedidoId }) => {
 
     // Envia a requisição de exclusão para o endpoint correto
     api
-      .delete(`/cakes/${pedidoId}`)
+      .patch(`/encomendas/${pedidoId}`,
+        {
+          andamentoEncomenda:"CANCELADA"
+        }
+      )
+
+
       .then(() => {
         console.log("Pedido cancelado com sucesso!");
         onClose(); // Fecha o modal após o sucesso
